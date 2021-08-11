@@ -18,16 +18,20 @@
     </section>
 
     <main class="main-bc">
-        
+
         <section id="content" class="content main-layout">
 
             <section class="generator">
+
                 <div class="canvas-container">
-                    <canvas id="canvas" height="400" width="400"></canvas>
+                    <canvas id="canvas" height="500" width="500"></canvas>
                 </div>
+
                 <div class="tools-container">
-                    <input class="txt-input" type="text" placeholder="Enter meme text here">
+                    <input type="text" id="enter-text" class="txt-input" name="text"
+                        placeholder="Enter new text" oninput="onInput(this.value)">
                 </div>
+
             </section>
 
             <section class="gallery" hidden> </section>
@@ -36,10 +40,8 @@
         </section>
     </main>
 
-    <script src="js/services/gallery-service.js"></script>
-    <script src="js/services/canvas-service.js"></script>
     <script src="js/services/meme-service.js"></script>
-    <script src="js/controller.js"></script>
+    <script src="js/meme-controller.js"></script>
 </body>
 
 <footer class="footer-bc">
