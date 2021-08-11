@@ -16,9 +16,12 @@ body {
     background-color: #e3e3e3;
 }
 
+.content {
+    height: 100vh;
+}
+
 .main-layout {
-    display: flex;
-    width: 900px;
+    width: 90vw;
     margin: 0 auto;
 }
 
@@ -26,21 +29,51 @@ body {
     background-color: #ff7f00;
 }
 
+.nav-bar-bc {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
 /* GALLERY */
 
 /* GENERATOR */
 
+.generator {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 50px
+}
+
 /* CANVAS */
 
 .canvas-container {
-    width: 405px;
-    height: 410px;
-    margin: 0 0 35px;
-    padding: 8px 0 140px;
+    width: 605px;
+    height: 610px;
+    margin: 20px 0;
 }
 
 /* TOOLS */
 
+.txt-input {
+    width: 186.5px;
+    height: 30px;
+    margin: 0 0 1px;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
 /* ABOUT */
 
 /* FOOTER */
+
+.footer-bc {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%
+}

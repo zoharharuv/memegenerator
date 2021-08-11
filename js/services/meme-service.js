@@ -16,7 +16,6 @@ var gMemes = {
 }
 
 function getImg(imgId) {
-    debugger
     const img = gImgs.find(img => {
         return (img.id === imgId) ? img : null;
     })
