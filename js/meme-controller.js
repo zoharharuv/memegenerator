@@ -9,7 +9,16 @@ var currMeme;
 var currIdx;
 function init() {
     gElText = document.querySelector('#txt-input');
-    renderMeme();
+    renderGallery();
+}
+
+function renderGallery(key = null) {
+    const imgs = getImgs(key);
+    const strHTMLs = imgs.map((img) => {
+        return `
+      <img src="${img.url}" class="gallery-item img-${img.id}"  onclick="onSelectMemeToRender(${img.id})">`;
+    });
+    document.querySelector('.gallery').innerHTML = strHTMLs.join('');
 }
 
 function renderMeme() {
@@ -19,9 +28,6 @@ function renderMeme() {
     gCanvas.width = gContainer.offsetWidth;
     gCanvas.height = gContainer.offsetHeight;
     gCtx = gCanvas.getContext('2d');
-    // GET SELECED MEME
-    currMeme = getMeme();
-    currIdx = (!gMeme.selectedLineIdx) ? gMeme.selectedLineIdx : gMeme.lines.length;
     // RENDER IMG+MEME LINES
     drawImg(currMeme.selectedImgId);
 }
@@ -41,16 +47,19 @@ function drawImg(imgId) {
 function drawMemeLines() {
     // USED INSIDE DRAWIMG
     gMeme.lines.forEach(line => {
-        gCtx.strokeStyle = `${line.color}`;
-        gCtx.fillStyle = `#ffffff`;
+        gCtx.strokeStyle = `${line.stroke}`;
+        gCtx.fillStyle = `${line.color}`;
         gCtx.textAlign = `${line.align}`;
-        gCtx.font = `${line.size}px Impact`;
+        gCtx.font = `${line.size}px ${line.font}`;
         gCtx.fillText(`${line.txt}`, line.x, line.y);
         gCtx.strokeText(`${line.txt}`, line.x, line.y);
     });
 }
 
 function onInput(val) {
+    // GET SELECED MEME
+    currMeme = getMeme();
+    currIdx = (!currMeme.selectedLineIdx) ? currMeme.selectedLineIdx : currMeme.lines.length;
     changeTxt(val, currIdx);
     renderMeme();
 }

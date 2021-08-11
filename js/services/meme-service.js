@@ -38,10 +38,10 @@ var gMeme = {
     lines: [
         {
             txt: 'Enter text here',
-            size: 35,
+            size: 30,
             align: 'left',
             color: 'white',
-            stroke: 'black',
+            stroke: 'red',
             font: 'impact',
             x: 150,
             y: 50,
@@ -97,4 +97,14 @@ function deleteText() {
 // G
 function changeTxt(txt, idx) {
     return (gMeme.lines[idx].txt = txt);
-  }
+}
+
+function getImgs(searchedWord) {
+    if (!searchedWord) return gImgs;
+    return gImgs.filter(img => {
+        return img.keywords.some(word => word.includes(searchedWord.toLowerCase()))
+    })
+}
+function getImgById(id) {
+    return gImgs.find(img => img.id === id);
+}
