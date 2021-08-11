@@ -1,3 +1,5 @@
+/* BASE */
+
 * {
     box-sizing: border-box;
 }
@@ -5,3 +7,40 @@
 body {
     margin: 0;
 }
+
+/* NAVBAR */
+
+/* LAYOUT */
+
+.main-bc {
+    background-color: #e3e3e3;
+}
+
+.main-layout {
+    display: flex;
+    width: 900px;
+    margin: 0 auto;
+}
+
+.nav-bar-bc, .footer-bc {
+    background-color: #ff7f00;
+}
+
+/* GALLERY */
+
+/* GENERATOR */
+
+/* CANVAS */
+
+.canvas-container {
+    width: 405px;
+    height: 410px;
+    margin: 0 0 35px;
+    padding: 8px 0 140px;
+}
+
+/* TOOLS */
+
+/* ABOUT */
+
+/* FOOTER */

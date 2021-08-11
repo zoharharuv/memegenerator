@@ -10,17 +10,41 @@
 </head>
 
 <body onload="init()">
-    <nav class="nav-bar main-layout">
-        Navbar
-    </nav>
-    <section id="content" class="content main-layout">
 
+    <section class="nav-bar-bc">
+        <nav class="nav-bar main-layout">
+            Navbar
+        </nav>
     </section>
-    <script src="js/service.js"></script>
+
+    <main class="main-bc">
+        <section id="content" class="content main-layout">
+            <section class="generator">
+                <div class="canvas-container">
+                    <canvas id="canvas" height="400" width="400"></canvas>
+                </div>
+                <div class="tools-container">
+
+                </div>
+            </section>
+            <section class="gallery" hidden>
+
+            </section>
+            <section class="about" hidden>
+
+            </section>
+        </section>
+    </main>
+
+    <script src="js/services/canvas-service.js"></script>
+    <script src="js/services/meme-service.js"></script>
     <script src="js/controller.js"></script>
 </body>
-<footer>
-    all rights reserved 2021
+
+<footer class="footer-bc">
+    <section class="footer-content main-layout">
+        all rights reserved 2021
+    </section>
 </footer>
 
 </html>
