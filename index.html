@@ -11,19 +11,18 @@
 
 <body onload="init()">
 
-    <main class="main-bc">
     <header class="nav-bar-bc">
-        <nav class="nav-bar main-layout flex space-between">
-            <a href="index.html"> <img id="logo" class="logo" src="design/LOGO/LOGO.png" /></a>
-            <!-- <div class="header-layout flex main-layout space-between align-items"> -->
-                <ul class="main-nav flex clean-list">
-                    <li onclick="onClickNavBtn(this)"><a href="#">Gallery</a></li>
-                    <li onclick="onClickNavBtn(this)"><a href="#">About</a></li>
-                </ul>
-                <button class="btn-menu-toggle" onclick="toggleMenu()" hidden>☰</button>
-                <!-- </div> -->
-            </nav>
+        <nav class="nav-bar main-layout flex space-between align-center">
+            <img id="logo" class="logo" src="design/LOGO/LOGO.png" />
+            <ul class="main-nav flex clean-list">
+                <li onclick="showGallery(this)"><a href="#">Gallery</a></li>
+                <li class="vertical-line"></li>
+                <li onclick="showAbout(this)"><a href="#">About</a></li>
+            </ul>
+            <button class="btn-menu-toggle" onclick="toggleMenu()">☰</button>
+        </nav>
     </header>
+    <main class="main-bc">
 
 
         <section id="content" class="content main-layout">
@@ -49,12 +48,26 @@
             </section>
 
             <section class="gallery"> </section>
+            <section class="about">
+                <div class="about-me">
+                    <p>This was created by Zohar Haruv as the second project in Coding Academy Fullstack course!</p>
+
+                </div>
+                <div class="about-links">
+                    <a href="https://github.com/zoharharuv/"><img src="design/ICONS/github-logo.png" alt="github" /></a>
+                    <a href="https://www.linkedin.com/in/zohar-haruv-a6690b210/"> <img
+                            src="design/ICONS/linkedin-logo.png" alt="linkedin" /></a>
+                    <a href="https://www.facebook.com/MisterBlat/"> <img src="design/ICONS/facebook-logo.png"
+                            alt="facebook" /></a>
+                </div>
+            </section>
 
         </section>
     </main>
 
     <script src="js/services/meme-service.js"></script>
     <script src="js/meme-controller.js"></script>
+    <script src="js/index-controller.js"></script>
 </body>
 
 <footer class="footer-bc">

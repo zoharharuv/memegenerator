@@ -10,6 +10,7 @@ var currIdx;
 var currImgId;
 function init() {
     renderGallery();
+    initEls();
 }
 
 function renderGallery(key = null) {
@@ -68,7 +69,8 @@ function onInput(val) {
 }
 
 function onSelectMeme(imgId) {
-    document.querySelector('.gallery').style.display = 'none';
+    hideEls();
+    removeActives();
     currImgId = imgId;
     renderMeme();
 }
@@ -94,3 +96,4 @@ function onMoveLine(diff) {
     moveLine(diff);
     renderMeme();
 }
+
