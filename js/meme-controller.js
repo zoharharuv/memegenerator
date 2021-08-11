@@ -4,11 +4,11 @@ var gContainer;
 var gCanvas;
 var gCtx;
 var gElContent;
-var gElText;
+// 
 var currMeme;
 var currIdx;
+var currImgId;
 function init() {
-    gElText = document.querySelector('#txt-input');
     renderGallery();
 }
 
@@ -16,24 +16,27 @@ function renderGallery(key = null) {
     const imgs = getImgs(key);
     const strHTMLs = imgs.map((img) => {
         return `
-      <img src="${img.url}" class="gallery-item img-${img.id}"  onclick="onSelectMemeToRender(${img.id})">`;
+      <img src="${img.url}" class="gallery-item img-${img.id}"  onclick="onSelectMeme(${img.id})">`;
     });
     document.querySelector('.gallery').innerHTML = strHTMLs.join('');
 }
 
 function renderMeme() {
     // INIT EL CANVAS
+    document.querySelector('.generator').style.display = 'flex';
     gContainer = document.querySelector('.canvas-container');
     gCanvas = document.querySelector('#canvas');
     gCanvas.width = gContainer.offsetWidth;
     gCanvas.height = gContainer.offsetHeight;
     gCtx = gCanvas.getContext('2d');
     // RENDER IMG+MEME LINES
-    drawImg(currMeme.selectedImgId);
+    currMeme = getMeme();
+    currMeme.selectedImgId = currImgId;
+    drawImg(currImgId);
 }
 
-function drawImg(imgId) {
-    const imgUrl = getImg(imgId);
+function drawImg() {
+    const imgUrl = getMemeImg();
     var img = new Image()
     img.src = imgUrl;
     img.onload = () => {
@@ -46,7 +49,7 @@ function drawImg(imgId) {
 
 function drawMemeLines() {
     // USED INSIDE DRAWIMG
-    gMeme.lines.forEach(line => {
+    currMeme.lines.forEach(line => {
         gCtx.strokeStyle = `${line.stroke}`;
         gCtx.fillStyle = `${line.color}`;
         gCtx.textAlign = `${line.align}`;
@@ -61,5 +64,11 @@ function onInput(val) {
     currMeme = getMeme();
     currIdx = (!currMeme.selectedLineIdx) ? currMeme.selectedLineIdx : currMeme.lines.length;
     changeTxt(val, currIdx);
+    renderMeme();
+}
+
+function onSelectMeme(imgId){
+    document.querySelector('.gallery').style.display = 'none';
+    currImgId = imgId;
     renderMeme();
 }

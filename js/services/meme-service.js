@@ -49,9 +49,9 @@ var gMeme = {
     ]
 }
 
-function getImg(imgId) {
+function getMemeImg() {
     const img = gImgs.find(img => {
-        return (img.id === imgId) ? img : null;
+        return (img.id === gMeme.selectedImgId) ? img : null;
     })
     return img.url;
 }
@@ -105,6 +105,6 @@ function getImgs(searchedWord) {
         return img.keywords.some(word => word.includes(searchedWord.toLowerCase()))
     })
 }
-function getImgById(id) {
-    return gImgs.find(img => img.id === id);
-}
+// function getImgById(id) {
+//     return gImgs.find(img => img.id === id);
+// }
