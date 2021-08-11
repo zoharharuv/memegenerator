@@ -62,13 +62,35 @@ function drawMemeLines() {
 function onInput(val) {
     // GET SELECED MEME
     currMeme = getMeme();
-    currIdx = (!currMeme.selectedLineIdx) ? currMeme.selectedLineIdx : currMeme.lines.length;
+    currIdx = currMeme.selectedLineIdx;
     changeTxt(val, currIdx);
     renderMeme();
 }
 
-function onSelectMeme(imgId){
+function onSelectMeme(imgId) {
     document.querySelector('.gallery').style.display = 'none';
     currImgId = imgId;
+    renderMeme();
+}
+
+function onSwitchLines() {
+    currIdx = switchLines();
+    document.querySelector('#txt-input').value = currMeme.lines[currIdx].txt;
+    document.querySelector('#txt-input').focus();
+    console.log(currIdx);
+}
+
+function onSetFontsize(size) {
+    if (!currMeme.lines.length) return;
+    if (!currIdx) currIdx = 0;
+    if (!checkSize(size)) return;
+    currMeme.lines[currIdx].size += size;
+    renderMeme();
+}
+
+function onMoveLine(diff) {
+    if (!currMeme.lines.length) return;
+    if (!currIdx) currIdx = 0;
+    moveLine(diff);
     renderMeme();
 }

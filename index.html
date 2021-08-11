@@ -28,8 +28,15 @@
                 </div>
 
                 <div class="tools-container">
-                    <input type="text" id="txt-input" class="txt-input" name="text"
-                        placeholder="Enter new text" oninput="onInput(this.value)">
+                <input type="text" id="txt-input" class="txt-input" name="text" placeholder="Enter new text"
+                    oninput="onInput(this.value)">
+                    <div class="tools-grid">
+                        <button class="tool-btn" onclick="onMoveLine(-10)">👆</button>
+                        <button class="tool-btn" onclick="onMoveLine(10)">👇</button>
+                        <img src="design/ICONS/switch-lines.png" class="tool-btn" onclick="onSwitchLines()"/>
+                        <img src="design/ICONS/font-plus.png" class="tool-btn" onclick="onSetFontsize(5)"/>
+                        <img src="design/ICONS/decrease-font.png" class="tool-btn" onclick="onSetFontsize(-5)"/>
+                    </div>
                 </div>
 
             </section>

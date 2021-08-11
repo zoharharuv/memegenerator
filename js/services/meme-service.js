@@ -41,10 +41,20 @@ var gMeme = {
             size: 30,
             align: 'left',
             color: 'white',
-            stroke: 'red',
+            stroke: 'black',
             font: 'impact',
             x: 150,
             y: 50,
+        },
+        {
+            txt: 'Enter text here',
+            size: 30,
+            align: 'left',
+            color: 'white',
+            stroke: 'black',
+            font: 'impact',
+            x: 150,
+            y: 450,
         },
     ]
 }
@@ -66,10 +76,12 @@ function handleInput(userTxt) {
     console.log('input:', gInput);
 }
 
-function switchLine() {
+function switchLines() {
+    if (!gMeme.lines.length) return;
+    if (gMeme.lines.length <= 1) return;
     gMeme.selectedLineIdx++;
     if (gMeme.selectedLineIdx >= gMeme.lines.length) gMeme.selectedLineIdx = 0;
-    console.log('curr line', gMeme.selectedLineIdx);
+    return gMeme.selectedLineIdx;
 }
 
 function addText() {
@@ -94,7 +106,6 @@ function deleteText() {
     drawImg(gMeme.selectedImgId);
 }
 
-// G
 function changeTxt(txt, idx) {
     return (gMeme.lines[idx].txt = txt);
 }
@@ -105,6 +116,13 @@ function getImgs(searchedWord) {
         return img.keywords.some(word => word.includes(searchedWord.toLowerCase()))
     })
 }
-// function getImgById(id) {
-//     return gImgs.find(img => img.id === id);
-// }
+
+function checkSize(size){
+    let isValid = gMeme.lines[gMeme.selectedLineIdx].size + size;
+    if(isValid === 10 || isValid === 60) return;
+    return true;
+}
+
+function moveLine(diff){
+    return gMeme.lines[gMeme.selectedLineIdx].y += diff;
+}
