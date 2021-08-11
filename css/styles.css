@@ -8,29 +8,43 @@ body {
     margin: 0;
 }
 
+a {
+    text-decoration: none;
+}
+
 a, button {
     cursor: pointer;
 }
 
-/* NAVBAR */
+/* HELPERS */
 
-/* LAYOUT */
+/* FLEX*/
 
-.main-bc {
-    background-color: #e3e3e3;
+.flex {
+    display: flex;
 }
 
-.content {
-    display: flex;
-    flex-direction: column;
-    min-height: 98vh;
+.flex.space-between {
+    justify-content: space-between;
+}
+
+.flex.justify-center {
     justify-content: center;
 }
 
-.main-layout {
-    width: 90vw;
-    margin: 0 auto;
+.flex.align-center {
+    align-items: center;
 }
+
+/* LIST */
+
+.clean-list {
+    padding-inline-start: 0px;
+    margin: 0;
+    list-style-type: none;
+}
+
+/* NAVBAR */
 
 .nav-bar-bc, .footer-bc {
     background-color: #ff7f00;
@@ -41,6 +55,35 @@ a, button {
     top: 0;
     left: 0;
     width: 100%;
+}
+
+.nav-bar {
+    display: flex;
+}
+
+.logo {
+    max-height: 35px;
+    padding: 5px;
+    object-fit: contain;
+}
+
+/* LAYOUT */
+
+.main-bc {
+    background-color: #e3e3e3;
+    max-width: 100vw;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    min-height: 98vh;
+    justify-content: center;
+}
+
+.main-layout {
+    max-width: 1240px;
+    margin: 0 auto;
 }
 
 /* GALLERY */
@@ -54,8 +97,9 @@ a, button {
 }
 
 .gallery-item {
-    object-fit: contain;
-    max-height: 33vh;
+    object-fit: cover;
+    max-height: 30vh;
+    width: 100%;
     cursor: pointer;
 }
 
@@ -83,25 +127,30 @@ a, button {
     flex-direction: column;
 }
 
+/*TOOLS BTNS */
+
+.tools-grid {
+    height: 500px;
+    margin: 10px 0;
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+    justify-items: center;
+    gap: 5px;
+}
+
 .txt-input {
-    width: 186.5px;
+    grid-row: 1;
+    grid-column: 1/-1;
+    width: 100%;
     height: 30px;
     margin: 0 0 1px;
     border-radius: 6px;
     background-color: #fff;
 }
 
-/*TOOLS BTNS */
-
-.tools-grid {
-    margin: 10px 0;
-    display: grid;
-    grid-template-rows: repeat(4, 1fr);
-    grid-template-columns: repeat(5, 1fr);
-    gap: 5px;
-}
-
 .tool-btn {
+    grid-row: 2;
     cursor: pointer;
     max-width: 30px;
     max-height: 30px;
@@ -117,4 +166,63 @@ a, button {
     bottom: 0;
     left: 0;
     width: 100%
+}
+
+.footer-content {
+    height: auto;
+    padding-bottom: 20px;
+    flex-direction: column;
+    text-align: center;
+}
+
+/* SMALL PC */
+
+@media screen and (max-width: 1280px) {
+    .main-layout {
+        max-width: 1040px;
+    }
+    .gallery {
+        margin: 55px 0;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+    }
+    .gallery-item {
+        object-fit: cover;
+    }
+}
+
+/* TABLET */
+
+@media screen and (max-width: 1090px) {
+    .main-layout {
+        max-width: 850px;
+    }
+    .gallery {
+        margin: 50px 0;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 20px;
+    }
+    .gallery-item {
+        object-fit: cover;
+    }
+}
+
+/* MOBILE */
+
+@media screen and (max-width: 760px) {
+    .main-layout {
+        max-width: 750px;
+    }
+    .gallery {
+        margin: 40px 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .gallery-item {
+        object-fit: cover;
+        max-height: 30vh;
+        max-width: 50vw;
+        cursor: pointer;
+    }
 }

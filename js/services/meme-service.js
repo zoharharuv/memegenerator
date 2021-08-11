@@ -71,39 +71,12 @@ function getMeme() {
 }
 
 
-function handleInput(userTxt) {
-    gInput = userTxt;
-    console.log('input:', gInput);
-}
-
 function switchLines() {
     if (!gMeme.lines.length) return;
     if (gMeme.lines.length <= 1) return;
     gMeme.selectedLineIdx++;
     if (gMeme.selectedLineIdx >= gMeme.lines.length) gMeme.selectedLineIdx = 0;
     return gMeme.selectedLineIdx;
-}
-
-function addText() {
-    if (!gInput) return;
-    if (!gMeme.selectedLineIdx) gMeme.selectedLineIdx = 0;
-    gMeme.lines.push({
-        txt: gInput,
-        size: 20,
-        align: 'left',
-        color: 'red',
-        x: txtPos.x,
-        y: txtPos.y
-    });
-    gMeme.selectedLineIdx++;
-    drawImg(gMeme.selectedImgId);
-    gInput = null;
-}
-
-function deleteText() {
-    gMeme.lines.splice(gMeme.selectedLineIdx, 1);
-    gMeme.selectedLineIdx = 0;
-    drawImg(gMeme.selectedImgId);
 }
 
 function changeTxt(txt, idx) {
@@ -117,12 +90,12 @@ function getImgs(searchedWord) {
     })
 }
 
-function checkSize(size){
+function checkSize(size) {
     let isValid = gMeme.lines[gMeme.selectedLineIdx].size + size;
-    if(isValid === 10 || isValid === 60) return;
+    if (isValid === 10 || isValid === 60) return;
     return true;
 }
 
-function moveLine(diff){
+function moveLine(diff) {
     return gMeme.lines[gMeme.selectedLineIdx].y += diff;
 }

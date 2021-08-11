@@ -11,13 +11,20 @@
 
 <body onload="init()">
 
-    <section class="nav-bar-bc">
-        <nav class="nav-bar main-layout">
-            <a href="index.html">Home</a>
-        </nav>
-    </section>
-
     <main class="main-bc">
+    <header class="nav-bar-bc">
+        <nav class="nav-bar main-layout flex space-between">
+            <a href="index.html"> <img id="logo" class="logo" src="design/LOGO/LOGO.png" /></a>
+            <!-- <div class="header-layout flex main-layout space-between align-items"> -->
+                <ul class="main-nav flex clean-list">
+                    <li onclick="onClickNavBtn(this)"><a href="#">Gallery</a></li>
+                    <li onclick="onClickNavBtn(this)"><a href="#">About</a></li>
+                </ul>
+                <button class="btn-menu-toggle" onclick="toggleMenu()" hidden>☰</button>
+                <!-- </div> -->
+            </nav>
+    </header>
+
 
         <section id="content" class="content main-layout">
 
@@ -28,14 +35,14 @@
                 </div>
 
                 <div class="tools-container">
-                <input type="text" id="txt-input" class="txt-input" name="text" placeholder="Enter new text"
-                    oninput="onInput(this.value)">
                     <div class="tools-grid">
+                        <input type="text" id="txt-input" class="txt-input" name="text" placeholder="Enter new text"
+                            oninput="onInput(this.value)">
                         <button class="tool-btn" onclick="onMoveLine(-10)">👆</button>
                         <button class="tool-btn" onclick="onMoveLine(10)">👇</button>
-                        <img src="design/ICONS/switch-lines.png" class="tool-btn" onclick="onSwitchLines()"/>
-                        <img src="design/ICONS/font-plus.png" class="tool-btn" onclick="onSetFontsize(5)"/>
-                        <img src="design/ICONS/decrease-font.png" class="tool-btn" onclick="onSetFontsize(-5)"/>
+                        <img src="design/ICONS/switch-lines.png" class="tool-btn" onclick="onSwitchLines()" />
+                        <img src="design/ICONS/font-plus.png" class="tool-btn" onclick="onSetFontsize(5)" />
+                        <img src="design/ICONS/decrease-font.png" class="tool-btn" onclick="onSetFontsize(-5)" />
                     </div>
                 </div>
 
