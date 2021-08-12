@@ -6,7 +6,7 @@
 
 body {
     margin: 0;
-    font-family: Montserrat, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     text-align: center;
     color: #ffffff;
 }
@@ -81,13 +81,9 @@ a, button {
 }
 
 .main-nav a {
-    text-align: center;
     width: 80px;
     height: 80px;
-    text-decoration: none;
-    letter-spacing: 1px;
     color: #ffffff;
-    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -147,6 +143,11 @@ a, button {
     max-height: 30vh;
     width: 100%;
     cursor: pointer;
+    transition-duration: 0.2s;
+}
+
+.gallery-item:hover {
+    transform: scale(1.1);
 }
 
 /* GENERATOR */
@@ -161,8 +162,7 @@ a, button {
 /* CANVAS */
 
 .canvas-container {
-    max-width: 500px;
-    max-height: 500px;
+    height: 500px;
     margin: 20px 0;
 }
 
@@ -175,13 +175,14 @@ a, button {
 
 /*TOOLS BTNS */
 
-.tools-grid {
+.control-box {
     height: 500px;
-    margin: 10px 0;
+    margin: 0 10px;
     display: grid;
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     grid-template-columns: repeat(5, 1fr);
     justify-items: center;
+    align-items: center;
     gap: 5px;
 }
 
@@ -189,21 +190,40 @@ a, button {
     grid-row: 1;
     grid-column: 1/-1;
     width: 100%;
-    height: 30px;
-    margin: 0 0 1px;
+    height: 40px;
+    margin: 0 5px;
     border-radius: 6px;
     background-color: #fff;
 }
 
 .tool-btn {
-    grid-row: 2;
     cursor: pointer;
-    max-width: 30px;
-    max-height: 30px;
-    margin: 4.5px 9px 0 9.5px;
-    padding: 5.5px 5.2px 4.9px 5.2px;
+    max-height: 40px;
+    margin: 0 10px;
+    padding: 5px;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.line-up, .line-down, .switch-lines, .add-line, .delete-line {
+    grid-row: 2;
+}
+
+.fonts-input {
+    cursor: pointer;
+    grid-row: 4;
+    grid-column: 1/4;
+    width: 100%;
+    height: 40px;
+    margin: 0 5px;
     border-radius: 6px;
     background-color: #fff;
+}
+
+.color-input{
+    opacity: 0;
+    height: 1px;
+    width: 1px;
 }
 
 /* FOOTER */
@@ -240,8 +260,7 @@ a, button {
     background-color: transparent;
 }
 
-
-.about a img{
+.about a img {
     width: 50%;
 }
 
@@ -264,7 +283,7 @@ a, button {
 
 @media screen and (max-width: 1090px) {
     .main-layout {
-        max-width: 850px;
+        max-width: 860px;
     }
     .gallery {
         grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -277,7 +296,7 @@ a, button {
 
 /* MOBILE */
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 840px) {
     /* LAYOUT */
     .main-layout {
         max-width: 100%
@@ -308,7 +327,7 @@ a, button {
         margin: 20px 0;
     }
     /* TOOLS */
-    .tools-grid {
+    .control-box {
         max-height: 25vh;
     }
     /* NAVBAR */
@@ -342,7 +361,6 @@ a, button {
         width: 100%;
         height: 130px;
         color: #ffffff;
-        text-align: center;
         display: flex;
         justify-content: center;
         align-items: center;

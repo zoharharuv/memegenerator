@@ -60,14 +60,6 @@ function drawMemeLines() {
     });
 }
 
-function onInput(val) {
-    // GET SELECED MEME
-    currMeme = getMeme();
-    currIdx = currMeme.selectedLineIdx;
-    changeTxt(val, currIdx);
-    renderMeme();
-}
-
 function onSelectMeme(imgId) {
     hideEls();
     removeActives();
@@ -75,18 +67,11 @@ function onSelectMeme(imgId) {
     renderMeme();
 }
 
-function onSwitchLines() {
-    currIdx = switchLines();
-    document.querySelector('#txt-input').value = currMeme.lines[currIdx].txt;
-    document.querySelector('#txt-input').focus();
-    console.log(currIdx);
-}
-
-function onSetFontsize(size) {
-    if (!currMeme.lines.length) return;
-    if (!currIdx) currIdx = 0;
-    if (!checkSize(size)) return;
-    currMeme.lines[currIdx].size += size;
+// CANVAS FUNCTIONS
+function onInput(val) {
+    currMeme = getMeme();
+    currIdx = currMeme.selectedLineIdx;
+    changeTxt(val, currIdx);
     renderMeme();
 }
 
@@ -97,3 +82,47 @@ function onMoveLine(diff) {
     renderMeme();
 }
 
+function onAddLine() {
+    currIdx = addLine();
+    console.log(currIdx);
+    renderMeme();
+}
+function onDeleteLine() {
+    if (!currMeme.lines.length) return;
+    if (!currIdx) currIdx = 0;
+    currIdx = deleteLine();
+    console.log(currIdx);
+    renderMeme();
+}
+
+function onSwitchLines() {
+    currIdx = switchLines();
+    if(!currIdx) return;
+    document.querySelector('#txt-input').value = currMeme.lines[currIdx].txt;
+    document.querySelector('#txt-input').focus();
+    renderMeme();
+}
+
+function onSetFontsize(size) {
+    if (!currMeme.lines.length) return;
+    if (!currIdx) currIdx = 0;
+    setFontSize(size);
+    renderMeme();
+}
+
+function onSetAlign(align) {
+    if (!currMeme.lines.length) return;
+    if (!currIdx) currIdx = 0;
+    setAlign(align);
+    renderMeme();
+}
+
+function onSetFont(font){
+    setFont(font);
+    renderMeme();
+}
+
+function onSetColor(option, color){
+    setColor(option, color);
+    renderMeme();
+}
