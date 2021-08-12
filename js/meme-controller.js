@@ -25,16 +25,16 @@ function renderMyMemes() {
     let elMemes = document.querySelector('.memes');
     let strHTMLs = ``;
     const memes = getMemes();
-    console.log(memes);
     if (memes) {
         strHTMLs = memes.map((meme, memeIdx) => {
             const imgUrl = getMemeImg(meme);
             return `
-          <img src="${imgUrl}" class="gallery-item img-${memeIdx}"  onclick="onSelectMyMeme(${memeIdx})">`;
+          <img src="${imgUrl}" class="gallery-item meme-item img-${memeIdx}"  onclick="onSelectMyMeme(${memeIdx})">`;
         });
+        strHTMLs.unshift(`<div class="meme-title"><h1>Your Meme Templates</h1></div>`)
         elMemes.innerHTML = strHTMLs.join('');
     } else {
-        elMemes.innerHTML = `<h1>You Havent saved any memes yet!</h1>`
+        elMemes.innerHTML = `<h1>You haven't saved any memes yet!</h1>`
     }
 }
 
@@ -50,9 +50,6 @@ function renderMeme() {
     currMeme = getMeme();
     currMeme.selectedImgId = currImgId;
     drawImg(currImgId);
-    gCanvas.addEventListener('click', (ev) => {
-        onClickCanvas(ev.offsetX, ev.offsetY);
-    });
 }
 
 function drawImg() {
@@ -150,12 +147,18 @@ function onSetColor(option, color) {
     renderMeme();
 }
 
+// MODAL FUNCS
 function onSaveMeme() {
     saveMeme();
     closeModal();
 }
 
-// HANDLE SAVED MEMES
+function onDownload(el) {
+    const memeImg = gCanvas.toDataURL('image/jpeg');
+    el.href = memeImg;
+}
+
+// MY MEME FUNC
 function onSelectMyMeme(memeIdx) {
     hideEls();
     removeActives();
@@ -165,6 +168,7 @@ function onSelectMyMeme(memeIdx) {
     renderMeme();
 }
 
+// TXT-INPUT FUNCS
 function resetInput() {
     const text = (currMeme.lines.length) ? currMeme.lines[0].txt : 'Click + for new line';
     document.querySelector('.txt-input').value = text;
@@ -172,12 +176,4 @@ function resetInput() {
 function focusInput() {
     document.querySelector('#txt-input').value = currMeme.lines[currIdx].txt;
     document.querySelector('#txt-input').focus();
-}
-// HANDLE CANVAS
-function onClickCanvas(x, y) {
-    console.log('x', x)
-    console.log('y', y);
-    currMeme.lines.find(line => {
-        console.log(line.x === x);
-    })
 }

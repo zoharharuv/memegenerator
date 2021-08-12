@@ -287,8 +287,25 @@ a, button {
 /* MEMES */
 
 .memes {
+    top: 0;
+    height: 100%;
     display: grid;
-    justify-content: start;
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    gap: 30px;
+}
+
+.meme-item {
+    object-fit: cover;
+    max-height: 30vh;
+    width: 100%;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+
+.meme-title {
+    grid-row: 1;
+    grid-column: 1/-1;
+    color: #975009;
 }
 
 /* MODAL */
@@ -375,6 +392,22 @@ a, button {
         object-fit: contain;
         max-height: 45vh;
         max-width: 60vw;
+    }
+    /* MEMES */
+    .memes {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .meme-item {
+        object-fit: cover;
+        max-height: 30vh;
+        width: 100%;
+        cursor: pointer;
+        transition-duration: 0.2s;
+    }
+    .meme-title {
+        color: #975009;
     }
     /* GENERATOR */
     .generator {

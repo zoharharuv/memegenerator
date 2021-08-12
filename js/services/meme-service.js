@@ -154,7 +154,7 @@ function setColor(option, color) {
     gMeme.lines[gMeme.selectedLineIdx][option] = color;
 }
 
-// PRIAVET FUNCS
+// PRIVATE FUNCS
 function _createLine() {
     return {
         txt: 'Enter text here',

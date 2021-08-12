@@ -102,8 +102,9 @@
         <aside class="modal">
             <button class="facebook-modal">Share on Facebook</button>
             <button>Upload</button>
-            <Button>Download</Button>
-            <button onclick="onSaveMeme()">Save to Memes</button>
+            <button><a href="#" class="download-modal" onclick="onDownload(this)" 
+                download="MyMeme.jpg">Download </a></button>
+            <button class="save-modal" onclick="onSaveMeme()">Save Template</button>
             <button class="close-modal" onclick="closeModal()">x</button>
         </aside>
     </main>
