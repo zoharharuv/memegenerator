@@ -50,8 +50,8 @@ function renderMeme() {
     currMeme = getMeme();
     currMeme.selectedImgId = currImgId;
     drawImg(currImgId);
-    gCanvas.addEventListener('click', (ev) =>{
-        onClickCanvas(ev.offsetX,ev.offsetY);
+    gCanvas.addEventListener('click', (ev) => {
+        onClickCanvas(ev.offsetX, ev.offsetY);
     });
 }
 
@@ -92,7 +92,7 @@ function onSelectMeme(imgId) {
 function onInput(val) {
     currMeme = getMeme();
     currIdx = currMeme.selectedLineIdx;
-    changeTxt(val, currIdx);
+    if (currIdx >= 0) changeTxt(val, currIdx);
     renderMeme();
 }
 
@@ -106,6 +106,7 @@ function onMoveLine(diff) {
 function onAddLine() {
     currIdx = addLine();
     console.log(currIdx);
+    focusInput();
     renderMeme();
 }
 function onDeleteLine() {
@@ -113,6 +114,7 @@ function onDeleteLine() {
     if (!currIdx) currIdx = 0;
     currIdx = deleteLine();
     console.log(currIdx);
+    resetInput();
     renderMeme();
 }
 
@@ -120,8 +122,7 @@ function onSwitchLines() {
     if (!currMeme.lines.length) return;
     currIdx = switchLines();
     if (!currIdx) return;
-    document.querySelector('#txt-input').value = currMeme.lines[currIdx].txt;
-    document.querySelector('#txt-input').focus();
+    focusInput();
     renderMeme();
 }
 
@@ -165,13 +166,17 @@ function onSelectMyMeme(memeIdx) {
 }
 
 function resetInput() {
-    document.querySelector('.txt-input').value = currMeme.lines[0].txt;
+    const text = (currMeme.lines.length) ? currMeme.lines[0].txt : 'Click + for new line';
+    document.querySelector('.txt-input').value = text;
 }
-
+function focusInput() {
+    document.querySelector('#txt-input').value = currMeme.lines[currIdx].txt;
+    document.querySelector('#txt-input').focus();
+}
 // HANDLE CANVAS
-function onClickCanvas(x, y){
-    console.log('x',x)
-    console.log('y',y);
+function onClickCanvas(x, y) {
+    console.log('x', x)
+    console.log('y', y);
     currMeme.lines.find(line => {
         console.log(line.x === x);
     })

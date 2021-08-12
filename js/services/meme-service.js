@@ -129,7 +129,7 @@ function addLine() {
 function deleteLine() {
     gMeme.lines.splice(gMeme.selectedLineIdx, 1);
     gMeme.selectedLineIdx--;
-    if (gMeme.selectedLineIdx < -1) gMeme.selectedLineIdx = 0;
+    if (gMeme.lines.length || gMeme.selectedLineIdx < -1) gMeme.selectedLineIdx = 0;
     return gMeme.selectedLineIdx;
 }
 
