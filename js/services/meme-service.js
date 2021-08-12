@@ -1,6 +1,7 @@
 'use strict'
 // GLOBAL VARS
-var gKeywords = { 'happy': 12, 'funny puk': 1 }
+const MEMES_DB = 'memesDB';
+var gKeywords = { 'happy': 5, 'love': 3, 'dogs': 3, 'nice': 2, 'baby': 4, 'cool': 10, 'funny': 7, 'angry': 5 };
 const gImgs = [
     { id: 1, url: 'imgs/1.jpg', keywords: ['happy'] },
     { id: 2, url: 'imgs/2.jpg', keywords: ['love', 'dogs'] },
