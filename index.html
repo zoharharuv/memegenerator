@@ -39,7 +39,7 @@
                     <div class="control-box">
                         <!-- LINE 1 -->
                         <input type="text" id="txt-input" class="txt-input" name="text" placeholder="Enter new text"
-                            oninput="onInput(this.value)">
+                            oninput="onInput(this.value)" autocomplete="off">
                         <!-- LINE 2 -->
                         <button class="tool-btn line-up" onclick="onMoveLine(-10)">👆</button>
                         <button class="tool-btn line-down" onclick="onMoveLine(10)">👇</button>
@@ -100,9 +100,9 @@
             <section class="memes"></section>
         </section>
         <aside class="modal">
-            <button class="facebook-modal">Share on Facebook</button>
-            <button>Upload</button>
-            <button><a href="#" class="download-modal" onclick="onDownload(this)" 
+            <button class="facebook-modal" onclick="onUpload('facebook')">Share on Facebook</button>
+            <button class="upload-modal" onclick="onUpload('upload')">Upload</button>
+            <button class="download-modal"><a href="#"  onclick="onDownload(this)" 
                 download="MyMeme.jpg">Download </a></button>
             <button class="save-modal" onclick="onSaveMeme()">Save Template</button>
             <button class="close-modal" onclick="closeModal()">x</button>
@@ -110,8 +110,8 @@
     </main>
     <script src="js/services/storage-service.js"></script>
     <script src="js/services/meme-service.js"></script>
-    <script src="js/meme-controller.js"></script>
-    <script src="js/modal-controller.js"></script>
+    <script src="js/services/upload-service.js"></script>
+    <script src="js/controller.js"></script>
     <script src="js/misc.js"></script>
 </body>
 

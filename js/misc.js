@@ -5,6 +5,8 @@ var elAbout;
 var elGenerator;
 var elMemes;
 var currEl;
+var elModal;
+
 
 window.addEventListener('resize', () =>{
     currSize = window.innerWidth;
@@ -79,4 +81,18 @@ function updateEl(){
 
 function setDisplay(){
     return (currSize <= 760) ? 'flex' : 'grid';
+}
+
+// MODAL
+function openModal() {
+    elModal = document.querySelector('.modal');
+    elModal.classList.toggle('open');
+    setTimeout(() => {
+        document.querySelector('header').addEventListener('click', closeModal)
+    }, 200);
+}
+
+function closeModal() {
+    document.querySelector('header').removeEventListener('click', closeModal);  
+    elModal.classList.toggle('open');
 }
