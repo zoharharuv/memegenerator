@@ -4,7 +4,7 @@ var gContainer;
 var gCanvas;
 var gCtx;
 var gElContent;
-// 
+// MEME
 var currMeme;
 var currIdx;
 var currImgId;
@@ -67,7 +67,7 @@ function onSelectMeme(imgId) {
     renderMeme();
 }
 
-// CANVAS FUNCTIONS
+// CONTROL-BOX FUNCS
 function onInput(val) {
     currMeme = getMeme();
     currIdx = currMeme.selectedLineIdx;

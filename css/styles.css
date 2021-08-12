@@ -220,7 +220,7 @@ a, button {
     background-color: #fff;
 }
 
-.color-input{
+.color-input {
     opacity: 0;
     height: 1px;
     width: 1px;
@@ -294,18 +294,25 @@ a, button {
     }
 }
 
-/* MOBILE */
-
-@media screen and (max-width: 840px) {
+@media screen and (max-width: 880px) {
     /* LAYOUT */
     .main-layout {
         max-width: 100%
     }
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+    }
+}
+
+/* MOBILE */
+
+@media screen and (max-width: 760px) {
     /* GALLERY */
     .gallery {
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin: 70px 0;
     }
     .gallery-item {
         object-fit: contain;

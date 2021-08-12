@@ -1,20 +1,45 @@
 'use strict'
+var currSize = window.innerWidth
+var elGallery;
+var elAbout;
+var elGenerator;
+var elMemes;
+var currEl;
+
+window.addEventListener('resize', () =>{
+    currSize = window.innerWidth;
+    if(currEl === 'gallery') elGallery.style.display = setDisplay();
+    if(currEl === 'memes') elMemes.style.display = setDisplay();
+});
+    
+
 // NAVBAR
 function toggleMenu() {
+    if (currSize > 760) return;
     document.body.classList.toggle('menu-open');
 }
 
 function showGallery(btn) {
+    currEl = 'gallery';
     onClickNavBtn(btn)
     hideEls()
-    document.querySelector('.gallery').style.display = 'grid';
+    elGallery.style.display = setDisplay();
     toggleMenu()
 }
 
 function showAbout(btn) {
+    currEl = 'about';
     onClickNavBtn(btn)
     hideEls()
-    document.querySelector('.about').style.display = 'flex';
+    elAbout.style.display = 'flex';
+    toggleMenu()
+}
+
+function showMemes(btn) {
+    currEl = 'memes';
+    onClickNavBtn(btn)
+    hideEls()
+    elMemes.style.display = setDisplay();
     toggleMenu()
 }
 
@@ -32,12 +57,25 @@ function removeActives() {
     })
 }
 
-function hideEls(){
-    document.querySelector('.generator').style.display = 'none';
-    document.querySelector('.gallery').style.display = 'none'
-    document.querySelector('.about').style.display = 'none';
+function hideEls() {
+    elGenerator.style.display = 'none';
+    elGallery.style.display = 'none'
+    elAbout.style.display = 'none';
+    elMemes.style.display = 'none';
 }
 
-function initEls(){
+function initEls() {
     document.querySelector('[href="#"]').classList.add('active');
+    elGallery = document.querySelector('.gallery');
+    elAbout = document.querySelector('.about');
+    elGenerator = document.querySelector('.generator');
+    elMemes = document.querySelector('.memes');
+}
+
+function updateEl(){
+    currEl = 'generator';
+}
+
+function setDisplay(){
+    return (currSize <= 760) ? 'flex' : 'grid';
 }

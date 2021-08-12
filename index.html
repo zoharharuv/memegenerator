@@ -15,9 +15,11 @@
         <nav class="nav-bar main-layout flex space-between align-center">
             <img id="logo" class="logo" src="design/LOGO/LOGO.png" />
             <ul class="main-nav flex clean-list">
-                <li onclick="showGallery(this)"><a href="#">Gallery</a></li>
+                <li class="nav-btn" onclick="showGallery(this)"><a href="#">Gallery</a></li>
                 <li class="vertical-line"></li>
-                <li onclick="showAbout(this)"><a href="#">About</a></li>
+                <li class="nav-btn" onclick="showMemes(this)"><a href="#">Memes</a></li>
+                <li class="vertical-line"></li>
+                <li class="nav-btn" onclick="showAbout(this)"><a href="#">About</a></li>
             </ul>
             <button class="btn-menu-toggle" onclick="toggleMenu()">☰</button>
         </nav>
@@ -66,6 +68,7 @@
                         <label for="font-fill" class="custom-txt-color">
                             <img src="design/ICONS/text-fill.png" class="tool-btn text-fill">
                         </label>
+                        <!-- LINE 5 -->
                     </div>
                     <input class="color-input" type="color"  id="font-stroke"
                         value="#000000" onchange="onSetColor('stroke',this.value)">
@@ -83,12 +86,13 @@
                 <div class="about-links">
                     <a href="https://github.com/zoharharuv/"><img src="design/ICONS/github-logo.png" alt="github" /></a>
                     <a href="https://www.linkedin.com/in/zohar-haruv-a6690b210/"> <img
-                            src="design/ICONS/linkedin-logo.png" alt="linkedin" /></a>
-                    <a href="https://www.facebook.com/MisterBlat/"> <img src="design/ICONS/facebook-logo.png"
+                        src="design/ICONS/linkedin-logo.png" alt="linkedin" /></a>
+                        <a href="https://www.facebook.com/MisterBlat/"> <img src="design/ICONS/facebook-logo.png"
                             alt="facebook" /></a>
-                </div>
-            </section>
-
+                        </div>
+                    </section>
+                    <section class="memes"></section>
+                    
         </section>
     </main>
     <script src="js/services/storage-service.js"></script>
