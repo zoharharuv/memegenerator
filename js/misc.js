@@ -41,6 +41,7 @@ function showMemes(btn) {
     hideEls()
     elMemes.style.display = setDisplay();
     toggleMenu()
+    renderMyMemes()
 }
 
 function onClickNavBtn(el) {

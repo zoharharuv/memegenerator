@@ -1,6 +1,7 @@
 'use strict'
 // GLOBAL VARS
 const MEMES_DB = 'memesDB';
+var gSavedMemes;
 var gFont = 'Impact';
 var gKeywords = { 'happy': 5, 'love': 3, 'dogs': 3, 'nice': 2, 'baby': 4, 'cool': 10, 'funny': 7, 'angry': 5 };
 const gImgs = [
@@ -62,15 +63,19 @@ var gMeme = {
     ]
 }
 // MAIN FUNCS
-function getMemeImg() {
+function getMemeImg(meme) {
     const img = gImgs.find(img => {
-        return (img.id === gMeme.selectedImgId) ? img : null;
+        return (img.id === meme.selectedImgId) ? img : null;
     })
     return img.url;
 }
 
 function getMeme() {
     return gMeme;
+}
+
+function getMyMeme(idx) {
+    return gMeme = gSavedMemes[idx];
 }
 
 function getImgs(searchedWord) {
@@ -80,6 +85,22 @@ function getImgs(searchedWord) {
     })
 }
 
+// MY MEMES PAGE
+function saveMeme() {
+    gSavedMemes = loadFromStorage(MEMES_DB);
+    if (!gSavedMemes) gSavedMemes = [];
+    _saveMemeToStorge()
+}
+
+function getMemes() {
+    gSavedMemes = loadFromStorage(MEMES_DB);
+    return gSavedMemes;
+}
+
+function resetMeme() {
+    return gMeme = _resetMeme()
+}
+
 
 
 // CANVAS FUNCS
@@ -87,11 +108,11 @@ function changeTxt(txt, idx) {
     return (gMeme.lines[idx].txt = txt);
 }
 function moveLine(diff) {
+    if (gMeme.lines.length <= 1) gMeme.selectedLineIdx = 0;
     return gMeme.lines[gMeme.selectedLineIdx].y += diff;
 }
 
 function switchLines() {
-    if (!gMeme.lines.length) return;
     if (gMeme.lines.length <= 1) return;
     gMeme.selectedLineIdx++;
     if (gMeme.selectedLineIdx >= gMeme.lines.length) gMeme.selectedLineIdx = 0;
@@ -118,23 +139,22 @@ function setFontSize(size) {
     return gMeme.lines[gMeme.selectedLineIdx].size += size;;
 }
 
-function setAlign(align){
+function setAlign(align) {
     gMeme.lines[gMeme.selectedLineIdx].align = align;
 }
 
-function setFont(font){
+function setFont(font) {
     gFont = font;
     if (!gMeme.lines.length) return;
     gMeme.lines[gMeme.selectedLineIdx].font = font;
 }
 
-function setColor(option, color){
+function setColor(option, color) {
     if (!gMeme.lines.length) return;
     gMeme.lines[gMeme.selectedLineIdx][option] = color;
 }
 
-// MISC FUNCS
-
+// PRIAVET FUNCS
 function _createLine() {
     return {
         txt: 'Enter text here',
@@ -146,4 +166,38 @@ function _createLine() {
         x: 250,
         y: 250,
     }
+}
+
+function _resetMeme() {
+    return {
+        selectedImgId: 1,
+        selectedLineIdx: 0,
+        lines: [
+            {
+                txt: 'Enter text here',
+                size: 30,
+                align: 'center',
+                color: 'white',
+                stroke: 'black',
+                font: 'impact',
+                x: 250,
+                y: 50,
+            },
+            {
+                txt: 'Enter text here',
+                size: 30,
+                align: 'center',
+                color: 'white',
+                stroke: 'black',
+                font: 'impact',
+                x: 250,
+                y: 450,
+            },
+        ]
+    }
+}
+
+function _saveMemeToStorge() {
+    gSavedMemes.push(gMeme);
+    saveToStorage(MEMES_DB, gSavedMemes)
 }

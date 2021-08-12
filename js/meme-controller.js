@@ -3,7 +3,6 @@
 var gContainer;
 var gCanvas;
 var gCtx;
-var gElContent;
 // MEME
 var currMeme;
 var currIdx;
@@ -21,6 +20,23 @@ function renderGallery(key = null) {
     });
     document.querySelector('.gallery').innerHTML = strHTMLs.join('');
 }
+// MY MEMES PAGE
+function renderMyMemes() {
+    let elMemes = document.querySelector('.memes');
+    let strHTMLs = ``;
+    const memes = getMemes();
+    console.log(memes);
+    if (memes) {
+        strHTMLs = memes.map((meme, memeIdx) => {
+            const imgUrl = getMemeImg(meme);
+            return `
+          <img src="${imgUrl}" class="gallery-item img-${memeIdx}"  onclick="onSelectMyMeme(${memeIdx})">`;
+        });
+        elMemes.innerHTML = strHTMLs.join('');
+    } else {
+        elMemes.innerHTML = `<h1>You Havent saved any memes yet!</h1>`
+    }
+}
 
 function renderMeme() {
     // INIT EL CANVAS
@@ -34,10 +50,13 @@ function renderMeme() {
     currMeme = getMeme();
     currMeme.selectedImgId = currImgId;
     drawImg(currImgId);
+    gCanvas.addEventListener('click', (ev) =>{
+        onClickCanvas(ev.offsetX,ev.offsetY);
+    });
 }
 
 function drawImg() {
-    const imgUrl = getMemeImg();
+    const imgUrl = getMemeImg(currMeme);
     var img = new Image()
     img.src = imgUrl;
     img.onload = () => {
@@ -64,6 +83,8 @@ function onSelectMeme(imgId) {
     hideEls();
     removeActives();
     currImgId = imgId;
+    currMeme = resetMeme();
+    resetInput();
     renderMeme();
 }
 
@@ -96,8 +117,9 @@ function onDeleteLine() {
 }
 
 function onSwitchLines() {
+    if (!currMeme.lines.length) return;
     currIdx = switchLines();
-    if(!currIdx) return;
+    if (!currIdx) return;
     document.querySelector('#txt-input').value = currMeme.lines[currIdx].txt;
     document.querySelector('#txt-input').focus();
     renderMeme();
@@ -117,12 +139,40 @@ function onSetAlign(align) {
     renderMeme();
 }
 
-function onSetFont(font){
+function onSetFont(font) {
     setFont(font);
     renderMeme();
 }
 
-function onSetColor(option, color){
+function onSetColor(option, color) {
     setColor(option, color);
     renderMeme();
+}
+
+function onSaveMeme() {
+    saveMeme();
+    closeModal();
+}
+
+// HANDLE SAVED MEMES
+function onSelectMyMeme(memeIdx) {
+    hideEls();
+    removeActives();
+    currMeme = getMyMeme(memeIdx);
+    currImgId = currMeme.selectedImgId;
+    resetInput();
+    renderMeme();
+}
+
+function resetInput() {
+    document.querySelector('.txt-input').value = currMeme.lines[0].txt;
+}
+
+// HANDLE CANVAS
+function onClickCanvas(x, y){
+    console.log('x',x)
+    console.log('y',y);
+    currMeme.lines.find(line => {
+        console.log(line.x === x);
+    })
 }

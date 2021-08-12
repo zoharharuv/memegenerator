@@ -173,7 +173,7 @@ a, button {
     flex-direction: column;
 }
 
-/*TOOLS BTNS */
+/*CONTROL-BOX */
 
 .control-box {
     height: 500px;
@@ -203,6 +203,11 @@ a, button {
     padding: 5px;
     border-radius: 8px;
     background-color: #fff;
+    transition: background-color 0.2s;
+}
+
+.tool-btn:hover {
+    background-color: #ff7f00;
 }
 
 .line-up, .line-down, .switch-lines, .add-line, .delete-line {
@@ -224,6 +229,21 @@ a, button {
     opacity: 0;
     height: 1px;
     width: 1px;
+}
+
+.publish-btn {
+    background-color: #ff7f00;
+    color: #fff;
+    font-size: large;
+    font-weight: bold;
+    grid-row: 5;
+    grid-column: 4/6;
+    transition: background-color 0.2s;
+}
+
+.publish-btn:hover {
+    background-color: rgb(44, 21, 144);
+    color: #fff;
 }
 
 /* FOOTER */
@@ -262,6 +282,43 @@ a, button {
 
 .about a img {
     width: 50%;
+}
+
+/* MEMES */
+
+.memes {
+    display: grid;
+    justify-content: start;
+}
+
+/* MODAL */
+
+.modal {
+    display: none;
+}
+
+.modal.open {
+    z-index: 15;
+    background-color: #d6d4cc;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    gap: 25px;
+}
+
+.modal .facebook-modal {
+    background-color: #3B5998;
+    color: #fff;
+}
+
+.close-modal {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 /* SMALL PC */

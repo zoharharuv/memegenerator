@@ -43,24 +43,29 @@
                         <!-- LINE 2 -->
                         <button class="tool-btn line-up" onclick="onMoveLine(-10)">👆</button>
                         <button class="tool-btn line-down" onclick="onMoveLine(10)">👇</button>
-                        <img src="design/ICONS/switch-lines.png" class="tool-btn switch-lines" onclick="onSwitchLines()" />
+                        <img src="design/ICONS/switch-lines.png" class="tool-btn switch-lines"
+                            onclick="onSwitchLines()" />
                         <img src="design/ICONS/add.png" class="tool-btn add-line" onclick="onAddLine()" />
                         <img src="design/ICONS/delete.png" class="tool-btn delete-line" onclick="onDeleteLine()" />
                         <!-- LINE 3 -->
                         <img src="design/ICONS/font-plus.png" class="tool-btn add-size" onclick="onSetFontsize(5)" />
-                        <img src="design/ICONS/decrease-font.png" class="tool-btn decrease-size" onclick="onSetFontsize(-5)" />
-                        <img src="design/ICONS/align-left.png" class="tool-btn align-right" onclick="onSetAlign('right')" />
-                        <img src="design/ICONS/align-center.png" class="tool-btn align-center" onclick="onSetAlign('center')" />
-                        <img src="design/ICONS/align-right.png" class="tool-btn align-left" onclick="onSetAlign('left')" />
+                        <img src="design/ICONS/decrease-font.png" class="tool-btn decrease-size"
+                            onclick="onSetFontsize(-5)" />
+                        <img src="design/ICONS/align-left.png" class="tool-btn align-right"
+                            onclick="onSetAlign('right')" />
+                        <img src="design/ICONS/align-center.png" class="tool-btn align-center"
+                            onclick="onSetAlign('center')" />
+                        <img src="design/ICONS/align-right.png" class="tool-btn align-left"
+                            onclick="onSetAlign('left')" />
                         <!-- LINE 4 -->
                         <select name="fonts" class="fonts-input" onchange="onSetFont(this.value)">
-                        <option value="impact">Impact</option>
-                        <option value="Arial">Arial</option>
-                        <option value="Georgia">Georgia</option>
-                        <option value="Verdana">Verdana</option>
-                        <option value="sans-serif">Sans-serif</option>
-                        <option value="serif">Serif</option>
-                        <option value="Cursive">Cursive</option>
+                            <option value="impact">Impact</option>
+                            <option value="Arial">Arial</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="sans-serif">Sans-serif</option>
+                            <option value="serif">Serif</option>
+                            <option value="Cursive">Cursive</option>
                         </select>
                         <label for="font-stroke" class="custom-stroke-txt">
                             <img src="design/ICONS/text-stroke.png" class="tool-btn text-stroke">
@@ -69,11 +74,12 @@
                             <img src="design/ICONS/text-fill.png" class="tool-btn text-fill">
                         </label>
                         <!-- LINE 5 -->
+                        <button class="tool-btn publish-btn" onclick="openModal()">Publish</button>
                     </div>
-                    <input class="color-input" type="color"  id="font-stroke"
-                        value="#000000" onchange="onSetColor('stroke',this.value)">
-                    <input class="color-input" type="color" id="font-fill" 
-                        value="#ffffff" onchange="onSetColor('color',this.value)">
+                    <input class="color-input" type="color" id="font-stroke" value="#000000"
+                        onchange="onSetColor('stroke',this.value)">
+                    <input class="color-input" type="color" id="font-fill" value="#ffffff"
+                        onchange="onSetColor('color',this.value)">
                 </div>
 
             </section>
@@ -86,18 +92,25 @@
                 <div class="about-links">
                     <a href="https://github.com/zoharharuv/"><img src="design/ICONS/github-logo.png" alt="github" /></a>
                     <a href="https://www.linkedin.com/in/zohar-haruv-a6690b210/"> <img
-                        src="design/ICONS/linkedin-logo.png" alt="linkedin" /></a>
-                        <a href="https://www.facebook.com/MisterBlat/"> <img src="design/ICONS/facebook-logo.png"
+                            src="design/ICONS/linkedin-logo.png" alt="linkedin" /></a>
+                    <a href="https://www.facebook.com/MisterBlat/"> <img src="design/ICONS/facebook-logo.png"
                             alt="facebook" /></a>
-                        </div>
-                    </section>
-                    <section class="memes"></section>
-                    
+                </div>
+            </section>
+            <section class="memes"></section>
         </section>
+        <aside class="modal">
+            <button class="facebook-modal">Share on Facebook</button>
+            <button>Upload</button>
+            <Button>Download</Button>
+            <button onclick="onSaveMeme()">Save to Memes</button>
+            <button class="close-modal" onclick="closeModal()">x</button>
+        </aside>
     </main>
     <script src="js/services/storage-service.js"></script>
     <script src="js/services/meme-service.js"></script>
     <script src="js/meme-controller.js"></script>
+    <script src="js/modal-controller.js"></script>
     <script src="js/misc.js"></script>
 </body>
 
