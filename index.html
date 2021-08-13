@@ -31,8 +31,7 @@
         <section id="content" class="content main-layout">
 
             <section class="search flex hidden">
-                <input type="search" id="search-bar" placeholder="Filter by word"
-                    oninput="onSearchWord(this.value)">
+                <input type="search" id="search-bar" placeholder="Filter by word &#128269;" oninput="onSearchWord(this.value)">
 
                 <ul class="words-list clean-list flex">
                     <li class="search-word funny" onclick="onSearchWord('funny', this)">funny</li>
@@ -125,7 +124,8 @@
                             alt="facebook" /></a>
                 </div>
             </section>
-            <section class="memes"></section>
+            <section class="memes">
+            </section>
         </section>
         <aside class="modal hidden">
             <button class="facebook-modal" onclick="onUpload('facebook')">Share on Facebook</button>

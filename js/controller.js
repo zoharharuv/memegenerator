@@ -19,7 +19,7 @@ function init() {
 }
 
 function renderGallery(gSearchWord = null) {
-    if(!gIsSearched) renderSearch();
+    if (!gIsSearched) renderSearch();
     const imgs = getImgs(gSearchWord);
     const strHTMLs = imgs.map((img) => {
         return `
@@ -30,8 +30,8 @@ function renderGallery(gSearchWord = null) {
 }
 // MY MEMES PAGE
 function renderMyMemes() {
-    let elMemes = document.querySelector('.memes');
-    let strHTMLs = ``;
+    let elMemes = document.querySelector('.memes')
+    let strHTMLs = `<div class="memes-container">`;
     const memes = getMemes();
     if (memes) {
         strHTMLs = memes.map((meme, memeIdx) => {
@@ -39,16 +39,17 @@ function renderMyMemes() {
             return `
           <img src="${imgUrl}" class="gallery-item meme-item img-${memeIdx}"  onclick="onSelectMyMeme(${memeIdx})">`;
         });
+        strHTMLs.push(`</div>`);
         strHTMLs.unshift(`<div class="meme-title"><h1>Your Meme Templates</h1></div>`)
         elMemes.innerHTML = strHTMLs.join('');
     } else {
-        elMemes.innerHTML = `<h1 class="memes-title">You haven't saved any memes yet!</h1>`
+        elMemes.innerHTML = `<div class="meme-title"><h1>You haven't saved any memes yet!</h1></div>`
     }
 }
 
 function renderMeme() {
     // INIT EL CANVAS
-    document.querySelector('.generator').classList.toggle('hidden');
+    document.querySelector('.generator').classList.remove('hidden');
     gContainer = document.querySelector('.canvas-container');
     gCanvas = document.querySelector('#canvas');
     gCanvas.width = gContainer.offsetWidth;
@@ -188,9 +189,9 @@ function focusInput() {
 
 
 // HANDLE SEARCH BAR
-function onSearchWord(word, el = null){
+function onSearchWord(word, el = null) {
     gIsSearched = true;
-    if(el){
+    if (el) {
         cleanSearch();
         const size = addSize(el.style.fontSize);
         el.style.fontSize = `${size}`;
