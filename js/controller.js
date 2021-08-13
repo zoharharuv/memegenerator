@@ -10,6 +10,9 @@ var currImgId;
 // SEARCH
 var gSearchWord;
 var gIsSearched = false;
+// UPLOAD
+var gIsUpload;
+var gImg
 
 // FIRST INIT
 function init() {
@@ -19,6 +22,7 @@ function init() {
 }
 
 function renderGallery(gSearchWord = null) {
+    gIsUpload = false;
     if (!gIsSearched) renderSearch();
     const imgs = getImgs(gSearchWord);
     const strHTMLs = imgs.map((img) => {
@@ -62,16 +66,24 @@ function renderMeme() {
 }
 
 function drawImg() {
-    const imgUrl = getMemeImg(currMeme);
-    var img = new Image()
-    img.src = imgUrl;
-    img.onload = () => {
-        gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
+    if (!gIsUpload) {
+        const imgUrl = getMemeImg(currMeme);
+        var img = new Image()
+        img.src = imgUrl;
+        img.onload = () => {
+            gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
+            drawMemeLines();
+            // SAVE CURRENT CTX
+            gCtx.save();
+        }
+    } else {
+        gCtx.drawImage(gImg, 0, 0, gCanvas.width, gCanvas.height);
         drawMemeLines();
         // SAVE CURRENT CTX
         gCtx.save();
     }
 }
+
 
 function drawMemeLines() {
     // USED INSIDE DRAWIMG
@@ -111,7 +123,6 @@ function onMoveLine(diff) {
 
 function onAddLine() {
     currIdx = addLine();
-    console.log(currIdx);
     focusInput();
     renderMeme();
 }
@@ -119,7 +130,6 @@ function onDeleteLine() {
     if (!currMeme.lines.length) return;
     if (!currIdx) currIdx = 0;
     currIdx = deleteLine();
-    console.log(currIdx);
     resetInput();
     renderMeme();
 }
@@ -198,4 +208,25 @@ function onSearchWord(word, el = null) {
     }
     gSearchWord = word;
     renderGallery(gSearchWord);
+}
+
+// HANDLE IMG UPLOAD
+function onImgInput(ev) {
+    gIsUpload = true;
+    loadImageFromInput(ev, renderImg)
+}
+
+function loadImageFromInput(ev, onImageReady) {
+    var reader = new FileReader()
+    reader.onload = function (event) {
+        var img = new Image()
+        img.onload = onImageReady.bind(null, img)
+        img.src = event.target.result
+    }
+    reader.readAsDataURL(ev.target.files[0])
+}
+
+function renderImg(img) {
+    gImg = img;
+    drawImg(gImg);
 }

@@ -31,7 +31,8 @@
         <section id="content" class="content main-layout">
 
             <section class="search flex hidden">
-                <input type="search" id="search-bar" placeholder="Filter by word &#128269;" oninput="onSearchWord(this.value)">
+                <input type="search" id="search-bar" placeholder="Filter by word &#128269;"
+                    oninput="onSearchWord(this.value)">
 
                 <ul class="words-list clean-list flex">
                     <li class="search-word funny" onclick="onSearchWord('funny', this)">funny</li>
@@ -55,10 +56,14 @@
 
             </section>
 
+
             <section class="gallery"></section>
 
             <section class="generator">
-
+                <div class="upload-img">
+                    <h2>Upload a photo</h2>
+                    <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
+                </div>
                 <div class="canvas-container">
                     <canvas id="canvas" height="500" width="500"></canvas>
                 </div>

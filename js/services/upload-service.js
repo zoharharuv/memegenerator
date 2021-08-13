@@ -1,5 +1,6 @@
 'use strict'
 function onUpload(option) {
+    debugger
     const imgDataUrl = gCanvas.toDataURL("image/jpeg")
     // A function to be called if request succeeds
     function onSuccess(uploadedImgUrl) {
