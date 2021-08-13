@@ -48,6 +48,7 @@ function showMemes(btn) {
 }
 
 function onClickNavBtn(el) {
+    gIsSearched = false;
     removeActives();
     el.classList.toggle('active');
     el.childNodes[0].classList.toggle('active');
@@ -97,16 +98,19 @@ function renderSearch() {
 }
 
 function onShowAllWords(el) {
-    el.innerText = 'hide...';
+    if (el.innerText === 'Hide..') { el.innerText = 'All..'; }
+    else { el.innerText = 'Hide..'; }
     document.querySelector('.all-words-box').classList.toggle('hidden');
 }
-
-function getRndNum(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+function cleanSearch() {
+    document.querySelector('#search-bar').value = '';
 }
 
 function addSize(currSize) {
     let sizeNum = +(currSize.slice(0, -2));
     if (sizeNum <= 50) sizeNum++;
     return `${sizeNum}px`;
+}
+function getRndNum(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }

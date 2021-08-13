@@ -28,10 +28,11 @@ a, button {
 }
 
 .content {
+    position: sticky;
+    top: 0;
     min-height: 99vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
 .main-layout {
@@ -139,7 +140,7 @@ a, button {
 }
 
 .gallery-item {
-    object-fit: cover;
+    object-fit: contain;
     max-height: 30vh;
     width: 100%;
     cursor: pointer;
@@ -300,7 +301,7 @@ a, button {
 }
 
 .meme-item {
-    object-fit: cover;
+    object-fit: contain;
     width: 100%;
     max-height: 30vh;
     cursor: pointer;
@@ -388,7 +389,7 @@ a, button {
         gap: 25px;
     }
     .gallery-item {
-        object-fit: cover;
+        object-fit: contain;
     }
 }
 
@@ -403,7 +404,7 @@ a, button {
         gap: 20px;
     }
     .gallery-item {
-        object-fit: cover;
+        object-fit: contain;
     }
 }
 
@@ -420,6 +421,10 @@ a, button {
 /* MOBILE */
 
 @media screen and (max-width: 760px) {
+    /* CONTENT */
+    .content{
+        position: unset;
+    }
     /* GALLERY */
     .gallery {
         grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
@@ -429,7 +434,7 @@ a, button {
         max-height: 25vh;
     }
     .gallery-item:hover {
-        transform: scale(1);
+        transform: unset;
     }
     /* MEMES */
     .memes {
@@ -439,7 +444,7 @@ a, button {
         min-height: unset;
     }
     .meme-item {
-        object-fit: cover;
+        object-fit: contain;
         width: 100%;
         max-height: 30vh;
         cursor: pointer;

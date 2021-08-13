@@ -7,7 +7,9 @@ var gCtx;
 var currMeme;
 var currIdx;
 var currImgId;
-// SEARCG
+// SEARCH
+var gSearchWord;
+var gIsSearched = false;
 
 // FIRST INIT
 function init() {
@@ -16,9 +18,9 @@ function init() {
     renderGallery();
 }
 
-function renderGallery(key = null) {
-    renderSearch();
-    const imgs = getImgs(key);
+function renderGallery(gSearchWord = null) {
+    if(!gIsSearched) renderSearch();
+    const imgs = getImgs(gSearchWord);
     const strHTMLs = imgs.map((img) => {
         return `
       <img src="${img.url}" class="gallery-item img-${img.id}"  onclick="onSelectMeme(${img.id})">`;
@@ -186,8 +188,13 @@ function focusInput() {
 
 
 // HANDLE SEARCH BAR
-function onSearchWord(word, el){
-    const size = addSize(el.style.fontSize);
-    el.style.fontSize = `${size}`;
-    console.log(word);
+function onSearchWord(word, el = null){
+    gIsSearched = true;
+    if(el){
+        cleanSearch();
+        const size = addSize(el.style.fontSize);
+        el.style.fontSize = `${size}`;
+    }
+    gSearchWord = word;
+    renderGallery(gSearchWord);
 }
