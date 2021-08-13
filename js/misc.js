@@ -3,6 +3,8 @@ var currSize = window.innerWidth
 var currEl;
 
 var elGallery;
+var gSearch;
+
 var elGenerator;
 var elMemes;
 var elAbout;
@@ -23,26 +25,26 @@ function toggleMenu() {
 function showGallery(btn) {
     currEl = 'gallery';
     onClickNavBtn(btn)
-    hideEls()
-    elGallery.classList.remove('hidden');
-    toggleMenu()
+    hideEls();
+    renderGallery();
+    toggleMenu();
 }
 
 function showAbout(btn) {
     currEl = 'about';
-    onClickNavBtn(btn)
-    hideEls()
+    onClickNavBtn(btn);
+    hideEls();
     elAbout.classList.remove('hidden');
-    toggleMenu()
+    toggleMenu();
 }
 
 function showMemes(btn) {
     currEl = 'memes';
-    onClickNavBtn(btn)
-    hideEls()
+    onClickNavBtn(btn);
+    hideEls();
     elMemes.classList.remove('hidden');
-    toggleMenu()
-    renderMyMemes()
+    toggleMenu();
+    renderMyMemes();
 }
 
 function onClickNavBtn(el) {
@@ -52,7 +54,8 @@ function onClickNavBtn(el) {
 }
 
 function removeActives() {
-    var elLinks = document.querySelectorAll('[href="#"]')
+    var elLinks = document.querySelectorAll('[href="#"]');
+    gSearch.classList.add('hidden');
     elLinks.forEach(link => {
         link.classList.remove('active');
         link.parentElement.classList.remove('active');
@@ -74,6 +77,7 @@ function initEls() {
     elMemes = document.querySelector('.memes');
     elModal = document.querySelector('.modal');
     elToggle = document.querySelector('.btn-menu-toggle');
+    gSearch = document.querySelector('.search');
 }
 function openModal() {
     elModal.classList.toggle('hidden');
@@ -83,7 +87,26 @@ function closeModal() {
 }
 
 // SEARCH BAR
-function orderSearchBar() {
-    gSearch = document.querySelector('.search');
+function renderSearch() {
     gSearch.classList.remove('hidden');
+    let searchWords = document.querySelectorAll('.search-word');
+    searchWords.forEach(word => {
+        const size = getRndNum(20, 40);
+        word.style.fontSize = `${size}px`;
+    })
+}
+
+function onShowAllWords(el) {
+    el.innerText = 'hide...';
+    document.querySelector('.all-words-box').classList.toggle('hidden');
+}
+
+function getRndNum(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function addSize(currSize) {
+    let sizeNum = +(currSize.slice(0, -2));
+    if (sizeNum <= 50) sizeNum++;
+    return `${sizeNum}px`;
 }

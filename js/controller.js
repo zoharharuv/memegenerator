@@ -8,7 +8,7 @@ var currMeme;
 var currIdx;
 var currImgId;
 // SEARCG
-var gSearch;
+
 // FIRST INIT
 function init() {
     initEls();
@@ -17,7 +17,7 @@ function init() {
 }
 
 function renderGallery(key = null) {
-    orderSearchBar();
+    renderSearch();
     const imgs = getImgs(key);
     const strHTMLs = imgs.map((img) => {
         return `
@@ -164,7 +164,6 @@ function onDownload(el) {
     el.href = memeImg;
 }
 
-
 // MY MEME FUNC
 function onSelectMyMeme(memeIdx) {
     hideEls();
@@ -183,4 +182,12 @@ function resetInput() {
 function focusInput() {
     document.querySelector('#txt-input').value = currMeme.lines[currIdx].txt;
     document.querySelector('#txt-input').focus();
+}
+
+
+// HANDLE SEARCH BAR
+function onSearchWord(word, el){
+    const size = addSize(el.style.fontSize);
+    el.style.fontSize = `${size}`;
+    console.log(word);
 }
