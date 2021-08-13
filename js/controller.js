@@ -48,7 +48,7 @@ function renderMyMemes() {
 
 function renderMeme() {
     // INIT EL CANVAS
-    document.querySelector('.generator').style.visibility = 'visible';
+    document.querySelector('.generator').classList.toggle('hidden');
     gContainer = document.querySelector('.canvas-container');
     gCanvas = document.querySelector('#canvas');
     gCanvas.width = gContainer.offsetWidth;
