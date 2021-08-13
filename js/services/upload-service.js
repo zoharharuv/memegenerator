@@ -1,6 +1,5 @@
 'use strict'
 function onUpload(option) {
-    debugger
     const imgDataUrl = gCanvas.toDataURL("image/jpeg")
     // A function to be called if request succeeds
     function onSuccess(uploadedImgUrl) {
@@ -13,7 +12,7 @@ function onUpload(option) {
             <a style="color: white" href="https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}"
             title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}');
             return false;">
-            Can share now!   
+            Click again to share!   
             </a>`;
         }
     }
@@ -25,7 +24,7 @@ function doUploadImg(imgDataUrl, onSuccess) {
     const formData = new FormData();
     formData.append('img', imgDataUrl)
 
-    fetch('//ca-upload.com/here/upload.php', {
+    fetch('http://ca-upload.com/here/upload.php', {
         method: 'POST',
         body: formData
     })
