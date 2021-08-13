@@ -7,12 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MemeGen</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" href="design/ICONS/m-favicon.png" />
 </head>
 
 <body onload="init()">
 
     <header class="nav-bar-bc">
-        <nav class="nav-bar main-layout flex space-between align-center">
+        <nav class="nav-bar main-layout flex">
             <img id="logo" class="logo" src="design/LOGO/LOGO.png" />
             <ul class="main-nav flex clean-list">
                 <li class="nav-btn" onclick="showGallery(this)"><a href="#">Gallery</a></li>
@@ -24,10 +25,35 @@
             <button class="btn-menu-toggle" onclick="toggleMenu()">☰</button>
         </nav>
     </header>
+
     <main class="main-bc">
 
-
         <section id="content" class="content main-layout">
+
+            <section class="search flex hidden">
+                <input type="search" id="search-bar" placeholder="Filter by word" oninput="onSearchWord(this.value)">
+
+                <ul class="words-list clean-list flex">
+                    <li class="search-word funny" onclick="onSearchWord('funny')">funny</li>
+                    <li class="search-word happy" onclick="onSearchWord('happy')">happy</li>
+                    <li class="search-word love" onclick="onSearchWord('love')">love</li>
+                    <li class="search-word nice" onclick="onSearchWord('nice')">nice</li>
+                </ul>
+                
+                <div class="all-words-box hidden">
+                    <ul class="words-list clean-list flex ">
+                        <li class="search-word cool" onclick="onSearchWord('cool')">cool</li>
+                        <li class="search-word angry" onclick="onSearchWord('angry')">angry</li>
+                        <li class="search-word sad" onclick="onSearchWord('sad')">sad</li>
+                        <li class="search-word baby" onclick="onSearchWord('baby')">baby</li>
+                        <li class="search-word cats" onclick="onSearchWord('cats')">cats</li>
+                        <li class="search-word dogs" onclick="onSearchWord('dogs')">dogs</li>
+                    </ul>
+                </div>
+
+                <span class="all-words-btn" onclick="onShowAllWords(this)">All...</span>
+
+            </section>
 
             <section class="generator">
 
@@ -84,7 +110,7 @@
 
             </section>
 
-            <section class="gallery"> </section>
+            <section class="gallery"></section>
             <section class="about">
                 <div class="about-me">
                     <p>This was created by Zohar Haruv as the second project in Coding Academy Fullstack course!</p>
@@ -99,15 +125,20 @@
             </section>
             <section class="memes"></section>
         </section>
-        <aside class="modal">
+        <aside class="modal hidden">
             <button class="facebook-modal" onclick="onUpload('facebook')">Share on Facebook</button>
             <button class="upload-modal" onclick="onUpload('upload')">Upload</button>
-            <button class="download-modal"><a href="#"  onclick="onDownload(this)" 
-                download="MyMeme.jpg">Download </a></button>
+            <button class="download-modal"><a href="#" onclick="onDownload(this)" download="MyMeme.jpg">Download
+                </a></button>
             <button class="save-modal" onclick="onSaveMeme()">Save Template</button>
             <button class="close-modal" onclick="closeModal()">x</button>
         </aside>
     </main>
+    <section class="footer-bc">
+        <section class="footer-content main-layout">
+            all rights reserved 2021 © zohar haruv
+        </section>
+    </section>
     <script src="js/services/storage-service.js"></script>
     <script src="js/services/meme-service.js"></script>
     <script src="js/services/upload-service.js"></script>
@@ -115,10 +146,6 @@
     <script src="js/misc.js"></script>
 </body>
 
-<footer class="footer-bc">
-    <section class="footer-content main-layout">
-        all rights reserved 2021
-    </section>
-</footer>
+
 
 </html>

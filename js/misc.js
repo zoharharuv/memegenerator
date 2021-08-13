@@ -1,31 +1,30 @@
 'use strict'
 var currSize = window.innerWidth
+var currEl;
+
 var elGallery;
-var elAbout;
 var elGenerator;
 var elMemes;
-var currEl;
+var elAbout;
+
 var elModal;
+var elToggle;
 
-
-window.addEventListener('resize', () =>{
+window.addEventListener('resize', () => {
     currSize = window.innerWidth;
-    if(currEl === 'gallery') elGallery.style.display = setDisplay();
-    if(currEl === 'memes') elMemes.style.display = setDisplay();
 });
-    
+
 
 // NAVBAR
 function toggleMenu() {
-    if (currSize > 760) return;
-    document.body.classList.toggle('menu-open');
+    if (currSize <= 760) document.body.classList.toggle('menu-open');
 }
 
 function showGallery(btn) {
     currEl = 'gallery';
     onClickNavBtn(btn)
     hideEls()
-    elGallery.style.display = setDisplay();
+    elGallery.classList.remove('hidden');
     toggleMenu()
 }
 
@@ -33,7 +32,7 @@ function showAbout(btn) {
     currEl = 'about';
     onClickNavBtn(btn)
     hideEls()
-    elAbout.style.display = 'flex';
+    elAbout.classList.remove('hidden');
     toggleMenu()
 }
 
@@ -41,7 +40,7 @@ function showMemes(btn) {
     currEl = 'memes';
     onClickNavBtn(btn)
     hideEls()
-    elMemes.style.display = setDisplay();
+    elMemes.classList.remove('hidden');
     toggleMenu()
     renderMyMemes()
 }
@@ -61,10 +60,10 @@ function removeActives() {
 }
 
 function hideEls() {
-    elGenerator.style.display = 'none';
-    elGallery.style.display = 'none'
-    elAbout.style.display = 'none';
-    elMemes.style.display = 'none';
+    elGenerator.classList.add('hidden');
+    elGallery.classList.add('hidden');
+    elAbout.classList.add('hidden');
+    elMemes.classList.add('hidden');
 }
 
 function initEls() {
@@ -73,26 +72,18 @@ function initEls() {
     elAbout = document.querySelector('.about');
     elGenerator = document.querySelector('.generator');
     elMemes = document.querySelector('.memes');
-}
-
-function updateEl(){
-    currEl = 'generator';
-}
-
-function setDisplay(){
-    return (currSize <= 760) ? 'flex' : 'grid';
-}
-
-// MODAL
-function openModal() {
     elModal = document.querySelector('.modal');
-    elModal.classList.toggle('open');
-    setTimeout(() => {
-        document.querySelector('header').addEventListener('click', closeModal)
-    }, 200);
+    elToggle = document.querySelector('.btn-menu-toggle');
+}
+function openModal() {
+    elModal.classList.toggle('hidden');
+}
+function closeModal() {
+    elModal.classList.toggle('hidden');
 }
 
-function closeModal() {
-    document.querySelector('header').removeEventListener('click', closeModal);  
-    elModal.classList.toggle('open');
+// SEARCH BAR
+function orderSearchBar() {
+    gSearch = document.querySelector('.search');
+    gSearch.classList.remove('hidden');
 }

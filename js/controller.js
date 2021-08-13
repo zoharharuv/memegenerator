@@ -7,18 +7,24 @@ var gCtx;
 var currMeme;
 var currIdx;
 var currImgId;
+// SEARCG
+var gSearch;
+// FIRST INIT
 function init() {
-    renderGallery();
     initEls();
+    hideEls();
+    renderGallery();
 }
 
 function renderGallery(key = null) {
+    orderSearchBar();
     const imgs = getImgs(key);
     const strHTMLs = imgs.map((img) => {
         return `
       <img src="${img.url}" class="gallery-item img-${img.id}"  onclick="onSelectMeme(${img.id})">`;
     });
     document.querySelector('.gallery').innerHTML = strHTMLs.join('');
+    document.querySelector('.gallery').classList.remove('hidden');
 }
 // MY MEMES PAGE
 function renderMyMemes() {
@@ -34,13 +40,13 @@ function renderMyMemes() {
         strHTMLs.unshift(`<div class="meme-title"><h1>Your Meme Templates</h1></div>`)
         elMemes.innerHTML = strHTMLs.join('');
     } else {
-        elMemes.innerHTML = `<h1>You haven't saved any memes yet!</h1>`
+        elMemes.innerHTML = `<h1 class="memes-title">You haven't saved any memes yet!</h1>`
     }
 }
 
 function renderMeme() {
     // INIT EL CANVAS
-    document.querySelector('.generator').style.display = 'flex';
+    document.querySelector('.generator').style.visibility = 'visible';
     gContainer = document.querySelector('.canvas-container');
     gCanvas = document.querySelector('#canvas');
     gCanvas.width = gContainer.offsetWidth;
