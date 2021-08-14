@@ -19,7 +19,7 @@ function onUpload(option) {
                 if (navigator.share) {
                     navigator.share({
                         title: 'My Meme',
-                        text: 'Check out my meme!',
+                        text: 'Check out my',
                         url: `${uploadedImgUrl}`,
                     })
                         .then(() => console.log('Successful share'))
@@ -36,7 +36,7 @@ function doUploadImg(imgDataUrl, onSuccess) {
     const formData = new FormData();
     formData.append('img', imgDataUrl)
 
-    fetch('https://www.ca-upload.com/here/upload.php', {
+    fetch('http://www.ca-upload.com/here/upload.php', {
         method: 'POST',
         body: formData
     })
