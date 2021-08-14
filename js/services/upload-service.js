@@ -4,19 +4,31 @@ function onUpload(option) {
     // A function to be called if request succeeds
     function onSuccess(uploadedImgUrl) {
         const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl);
-        if(option === 'upload'){
+        if (option === 'upload') {
             document.querySelector('.upload-modal').innerHTML = `<a style="color: darkgreen" href="${uploadedImgUrl}">Your photo URL</a>`;
         }
-        if(option === 'facebook'){
-            document.querySelector('.facebook-modal').innerHTML = `
-            <a style="color: white" href="https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}"
-            title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}');
-            return false;">
-            Click again to share!   
-            </a>`;
+        if (option === 'facebook') {
+            if (gCurrSize > 760) {
+                document.querySelector('.facebook-modal').innerHTML = `
+                <a style="color: white" href="https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}"
+                title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}');
+                return false;">
+                Click again to share!   
+                </a>`;
+            } else {
+                if (navigator.share) {
+                    navigator.share({
+                        title: 'My Meme',
+                        text: 'Check out my meme!',
+                        url: `${uploadedImgUrl}`,
+                    })
+                        .then(() => console.log('Successful share'))
+                        .catch((error) => console.log('Error sharing', error));
+                }
+            }
         }
     }
-    doUploadImg(imgDataUrl, onSuccess);
+doUploadImg(imgDataUrl, onSuccess);
 }
 
 function doUploadImg(imgDataUrl, onSuccess) {
