@@ -53,11 +53,9 @@ function renderMyMemes() {
 
 function renderMeme() {
     // INIT EL CANVAS
-    document.querySelector('.generator').classList.remove('hidden');
+    document.querySelector('.meme-gen').classList.remove('hidden');
     gContainer = document.querySelector('.canvas-container');
     gCanvas = document.querySelector('#canvas');
-    gCanvas.width = gContainer.offsetWidth;
-    gCanvas.height = gContainer.offsetHeight;
     gCtx = gCanvas.getContext('2d');
     // RENDER IMG+MEME LINES
     currMeme = getMeme();

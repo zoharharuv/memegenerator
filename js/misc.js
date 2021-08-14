@@ -1,9 +1,11 @@
 'use strict'
-var currSize = window.innerWidth
-var currEl;
+var gCurrSize = window.innerWidth
+var gCurrEl;
+var gMaxFontSize;
+var gCanvas;
 
-var elGallery;
 var gSearch;
+var elGallery;
 
 var elGenerator;
 var elMemes;
@@ -13,17 +15,17 @@ var elModal;
 var elToggle;
 
 window.addEventListener('resize', () => {
-    currSize = window.innerWidth;
+    gCurrSize = window.innerWidth;
 });
 
 
 // NAVBAR
 function toggleMenu() {
-    if (currSize <= 760) document.body.classList.toggle('menu-open');
+    if (gCurrSize <= 760) document.body.classList.toggle('menu-open');
 }
 
 function showGallery(btn) {
-    currEl = 'gallery';
+    gCurrEl = 'gallery';
     onClickNavBtn(btn)
     hideEls();
     renderGallery();
@@ -31,7 +33,7 @@ function showGallery(btn) {
 }
 
 function showAbout(btn) {
-    currEl = 'about';
+    gCurrEl = 'about';
     onClickNavBtn(btn);
     hideEls();
     elAbout.classList.remove('hidden');
@@ -39,7 +41,7 @@ function showAbout(btn) {
 }
 
 function showMemes(btn) {
-    currEl = 'memes';
+    gCurrEl = 'memes';
     onClickNavBtn(btn);
     hideEls();
     elMemes.classList.remove('hidden');
@@ -74,11 +76,19 @@ function initEls() {
     document.querySelector('[href="#"]').classList.add('active');
     elGallery = document.querySelector('.gallery');
     elAbout = document.querySelector('.about');
-    elGenerator = document.querySelector('.generator');
+    elGenerator = document.querySelector('.meme-gen');
     elMemes = document.querySelector('.memes');
     elModal = document.querySelector('.modal');
     elToggle = document.querySelector('.btn-menu-toggle');
     gSearch = document.querySelector('.search');
+    // FOR CANVAS
+    gCanvas = document.querySelector('#canvas');
+    // RESIZE CANVAS
+    if (gCurrSize <= 760) {
+        gCanvas.width = 350;
+        gCanvas.height = 350;
+        setMemeSize(350);
+    }
 }
 function openModal() {
     elModal.classList.toggle('hidden');
@@ -91,8 +101,9 @@ function closeModal() {
 function renderSearch() {
     gSearch.classList.remove('hidden');
     let searchWords = document.querySelectorAll('.search-word');
+    gMaxFontSize = (gCurrSize <= 760) ? 35 : 50;
     searchWords.forEach(word => {
-        const size = getRndNum(20, 40);
+        const size = getRndNum((gMaxFontSize / 2), gMaxFontSize - 7);
         word.style.fontSize = `${size}px`;
     })
 }
@@ -108,7 +119,7 @@ function cleanSearch() {
 
 function addSize(currSize) {
     let sizeNum = +(currSize.slice(0, -2));
-    if (sizeNum <= 50) sizeNum++;
+    if (sizeNum <= gMaxFontSize) sizeNum++;
     return `${sizeNum}px`;
 }
 function getRndNum(min, max) {

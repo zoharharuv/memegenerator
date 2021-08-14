@@ -24,7 +24,7 @@ function doUploadImg(imgDataUrl, onSuccess) {
     const formData = new FormData();
     formData.append('img', imgDataUrl)
 
-    fetch('http://ca-upload.com/here/upload.php', {
+    fetch('http://www.ca-upload.com/here/upload.php', {
         method: 'POST',
         body: formData
     })

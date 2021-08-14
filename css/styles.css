@@ -5,11 +5,11 @@
 }
 
 body {
-    height: 100vh;
     margin: 0;
     font-family: 'Montserrat', sans-serif;
     text-align: center;
     color: #ffffff;
+    background-color: #e3e3e3;
 }
 
 a {
@@ -22,20 +22,15 @@ a, button {
 
 /* LAYOUT */
 
-.main-bc {
-    width: 100%;
-    background-color: #e3e3e3;
-}
+/* .main-container {} */
 
 .content {
-    min-height: 100vh;
-    position: sticky;
     display: flex;
     flex-direction: column;
 }
 
 .main-layout {
-    max-width: 1240px;
+    width: 1240px;
     margin: 0 auto;
 }
 
@@ -46,9 +41,8 @@ a, button {
 }
 
 .nav-bar-bc {
-    top: 0;
-    left: 0;
     width: 100%;
+    margin-bottom: 10px;
 }
 
 .nav-bar {
@@ -104,8 +98,6 @@ a, button {
 /* SEARCH-BAR */
 
 .search {
-    z-index: 5;
-    position: sticky;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
@@ -119,7 +111,6 @@ a, button {
     border: 2px solid black;
     color: #111;
     box-shadow: 3px 1px 0px 2px, 0px -1px 0px 2px rgba(0, 0, 0, 0.62);
-    font-family: cursive;
     letter-spacing: 2px;
     text-transform: uppercase;
 }
@@ -141,16 +132,10 @@ a, button {
     margin: 10px;
 }
 
-.all-words-box {}
-
-.all-words-btn {}
-
 /* GALLERY */
 
 .search-bar {
-    position: absolute;
     width: 100%;
-    top: 85px;
     display: flex;
 }
 
@@ -163,7 +148,6 @@ a, button {
 
 .gallery-item {
     object-fit: contain;
-    max-height: 30vh;
     width: 100%;
     cursor: pointer;
     transition-duration: 0.2s;
@@ -173,24 +157,20 @@ a, button {
     transform: scale(1.1);
 }
 
-/* GENERATOR */
-
-.generator {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto 0;
-    gap: 100px;
-}
-
 /* upload */
 
-.upload-img {
-    position: absolute;
-    top: 80px;
+.meme-gen {
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+}
+
+.upload-img {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .upload-img h2 {
@@ -202,11 +182,22 @@ a, button {
     margin: 0;
 }
 
+/* GENERATOR */
+
+.generator {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    margin: auto 0;
+    gap: 100px;
+}
+
 /* CANVAS */
 
 .canvas-container {
-    height: 500px;
-    margin: 20px 0;
+    height: 550px;
+    width: 550px;
 }
 
 /* TOOLS */
@@ -241,7 +232,7 @@ a, button {
 
 .tool-btn {
     margin: 0 10px;
-    max-height: 40px;
+    height: 40px;
     background-color: #fff;
     cursor: pointer;
     padding: 5px;
@@ -303,14 +294,16 @@ a, button {
 /* ABOUT */
 
 .about {
+    min-height: 90vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin: auto 0;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
-/* .about-me {} */
+.about-me {
+    display: flex;
+}
 
 .about-me * {
     color: black;
@@ -333,6 +326,7 @@ a, button {
 /* MY-MEMES */
 
 .memes {
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -359,17 +353,11 @@ a, button {
 .meme-item {
     object-fit: contain;
     width: 100%;
-    max-height: 30vh;
     cursor: pointer;
     transition-duration: 0.2s;
 }
 
 /* MODAL */
-
-.modal {
-    display: flex;
-    flex-direction: column;
-}
 
 .modal {
     position: fixed;
@@ -434,7 +422,7 @@ a, button {
 
 @media screen and (max-width: 1280px) {
     .main-layout {
-        max-width: 1040px;
+        width: 1040px;
     }
     .gallery {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -452,7 +440,7 @@ a, button {
 
 @media screen and (max-width: 1090px) {
     .main-layout {
-        max-width: 860px;
+        width: 860px;
     }
     .gallery {
         grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -466,46 +454,36 @@ a, button {
     }
 }
 
-@media screen and (max-width: 870px) {
+/* PABLET */
+
+@media screen and (max-width: 900px) {
     /* LAYOUT */
     .main-layout {
-        max-width: 100%
+        width: 700px;
     }
+    .main-container {
+        padding-top: 50px;
+    }
+    /* GALLARY */
     .gallery {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: repeat(2, minmax(300px, 1fr));
     }
     /* GENERATOR */
     .generator {
-        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 50px;
         flex-flow: column wrap;
-        justify-content: flex-start;
     }
     /* CANVAS */
     .canvas-container {
-        display: block;
-        max-height: 500px;
-        max-width: 500px;
-        align-self: center;
+        margin-bottom: 50px;
     }
     /* TOOLS */
     .control-box {
-        max-height: 25vh;
-        grid-template-columns: repeat(5, 48px);
-        grid-auto-rows: auto;
-        gap: 10px;
-        margin-top: 10px;
-        max-width: fit-content;
-        align-self: center;
-        border-radius: 5px;
-        padding: 0.625rem;
-        display: grid;
-        grid-template-rows: repeat(6, 3.75rem);
-        position: relative;
+        margin-top: 10px 0 0 0;
     }
 }
 
@@ -513,17 +491,16 @@ a, button {
 
 @media screen and (max-width: 760px) {
     /* CONTENT */
-    .content {
-        position: unset;
-        justify-content: space-evenly;
+    .main-layout {
+        max-width: 560px;
     }
     /* GALLERY */
     .gallery {
-        grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
     .gallery-item {
+        max-width: 560px;
         object-fit: contain;
-        max-height: 25vh;
     }
     .gallery-item:hover {
         transform: unset;
@@ -537,9 +514,18 @@ a, button {
     .meme-item {
         object-fit: contain;
         width: 100%;
-        max-height: 30vh;
         cursor: pointer;
         transition-duration: 0.2s;
+    }
+    /* CANVAS */
+    .canvas-container {
+        height: 350px;
+        width: 350px;
+        margin-bottom: 10px;
+    }
+    /* TOOLS */
+    .control-box {
+        height: 400px;
     }
     /* NAVBAR */
     body.menu-open .main-nav {
@@ -551,10 +537,7 @@ a, button {
         pointer-events: auto;
     }
     .nav-bar-bc {
-        z-index: 20;
         position: fixed;
-        top: 0;
-        left: 0;
     }
     .main-nav {
         z-index: 20;
@@ -563,7 +546,7 @@ a, button {
         right: 0;
         flex-direction: column;
         background-color: rgb(41 41 41 / 95%);
-        height: 100vh;
+        height: 100%;
         width: 100%;
         box-shadow: 0px 0px 0px transparent;
         transform: translateX(100%);
@@ -587,7 +570,7 @@ a, button {
         color: rgb(238, 230, 230);
     }
     .btn-menu-toggle {
-        position: fixed;
+        position: absolute;
         top: 0;
         right: 0;
         display: inline-block;

@@ -2,6 +2,8 @@
 // GLOBAL VARS
 const MEMES_DB = 'memesDB';
 var gSavedMemes;
+var gSize = 550;
+
 var gFont = 'Impact';
 var gKeywords = { 'happy': 5, 'love': 3, 'dogs': 3, 'nice': 2, 'baby': 4, 'cool': 10, 'funny': 7, 'angry': 5 };
 const gImgs = [
@@ -47,7 +49,7 @@ var gMeme = {
             color: 'white',
             stroke: 'black',
             font: 'impact',
-            x: 250,
+            x: gSize / 2,
             y: 50,
         },
         {
@@ -57,8 +59,8 @@ var gMeme = {
             color: 'white',
             stroke: 'black',
             font: 'impact',
-            x: 250,
-            y: 450,
+            x: gSize / 2,
+            y: gSize - 50,
         },
     ]
 }
@@ -163,8 +165,8 @@ function _createLine() {
         color: 'white',
         stroke: 'black',
         font: gFont,
-        x: 250,
-        y: 250,
+        x: gSize / 2,
+        y: gSize / 2
     }
 }
 
@@ -180,8 +182,8 @@ function _resetMeme() {
                 color: 'white',
                 stroke: 'black',
                 font: 'impact',
-                x: 250,
-                y: 50,
+                x: gSize / 2,
+                y: 50
             },
             {
                 txt: 'Enter text here',
@@ -190,8 +192,8 @@ function _resetMeme() {
                 color: 'white',
                 stroke: 'black',
                 font: 'impact',
-                x: 250,
-                y: 450,
+                x: gSize / 2,
+                y: gSize - 50
             },
         ]
     }
@@ -200,4 +202,10 @@ function _resetMeme() {
 function _saveMemeToStorge() {
     gSavedMemes.push(gMeme);
     saveToStorage(MEMES_DB, gSavedMemes)
+}
+
+// CANVAS
+function setMemeSize(size){
+    gSize = size;
+    gMeme.lines[1].y = gSize - 50;
 }
