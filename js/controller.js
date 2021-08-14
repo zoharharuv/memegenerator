@@ -34,16 +34,17 @@ function renderGallery(gSearchWord = null) {
 }
 // MY MEMES PAGE
 function renderMyMemes() {
+    debugger
     let elMemes = document.querySelector('.memes')
-    let strHTMLs = `<div class="memes-container">`;
     const memes = getMemes();
     if (memes) {
-        strHTMLs = memes.map((meme, memeIdx) => {
+        let strHTMLs = memes.map((meme, memeIdx) => {
             const imgUrl = getMemeImg(meme);
             return `
-          <img src="${imgUrl}" class="gallery-item meme-item img-${memeIdx}"  onclick="onSelectMyMeme(${memeIdx})">`;
+            <img src="${imgUrl}" class="gallery-item img-${memeIdx}"  onclick="onSelectMyMeme(${memeIdx})">`;
         });
         strHTMLs.push(`</div>`);
+        strHTMLs.unshift(`<div class="memes-container">`);
         strHTMLs.unshift(`<div class="meme-title"><h1>Your Meme Templates</h1></div>`)
         elMemes.innerHTML = strHTMLs.join('');
     } else {

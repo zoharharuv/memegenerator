@@ -139,7 +139,7 @@ a, button {
     display: flex;
 }
 
-.gallery {
+.gallery, .memes-container {
     margin: 50px 0;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
@@ -147,8 +147,8 @@ a, button {
 }
 
 .gallery-item {
-    object-fit: contain;
     width: 100%;
+    object-fit: contain;
     cursor: pointer;
     transition-duration: 0.2s;
 }
@@ -342,21 +342,6 @@ a, button {
     margin: 0;
 }
 
-.memes-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-    gap: 30px;
-    justify-content: center;
-    align-items: center;
-}
-
-.meme-item {
-    object-fit: contain;
-    width: 100%;
-    cursor: pointer;
-    transition-duration: 0.2s;
-}
-
 /* MODAL */
 
 .modal {
@@ -424,7 +409,7 @@ a, button {
     .main-layout {
         width: 1040px;
     }
-    .gallery {
+    .gallery, .memes-container {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 25px;
     }
@@ -442,7 +427,7 @@ a, button {
     .main-layout {
         width: 860px;
     }
-    .gallery {
+    .gallery, .memes-container {
         grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
         gap: 20px;
     }
@@ -465,7 +450,7 @@ a, button {
         padding-top: 50px;
     }
     /* GALLARY */
-    .gallery {
+    .gallery, .memes-container {
         grid-template-columns: repeat(2, minmax(300px, 1fr));
     }
     /* GENERATOR */
@@ -495,11 +480,10 @@ a, button {
         max-width: 560px;
     }
     /* GALLERY */
-    .gallery {
+    .gallery, .memes-container {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
     .gallery-item {
-        max-width: 560px;
         object-fit: contain;
     }
     .gallery-item:hover {
@@ -507,15 +491,7 @@ a, button {
     }
     /* MEMES */
     .memes {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .meme-item {
-        object-fit: contain;
-        width: 100%;
-        cursor: pointer;
-        transition-duration: 0.2s;
+        justify-content: center;
     }
     /* CANVAS */
     .canvas-container {
