@@ -34,7 +34,6 @@ function renderGallery(gSearchWord = null) {
 }
 // MY MEMES PAGE
 function renderMyMemes() {
-    debugger
     let elMemes = document.querySelector('.memes')
     const memes = getMemes();
     if (memes) {
