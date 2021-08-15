@@ -44,7 +44,7 @@ function renderMyMemes() {
         });
         strHTMLs.push(`</div>`);
         strHTMLs.unshift(`<div class="memes-container">`);
-        strHTMLs.unshift(`<div class="meme-title"><h1>Your Meme Templates</h1></div>`)
+        strHTMLs.unshift(`<div class="meme-title"><h2>Your Meme Templates</h2></div>`)
         elMemes.innerHTML = strHTMLs.join('');
     } else {
         elMemes.innerHTML = `<div class="meme-title"><h1>You haven't saved any memes yet!</h1></div>`

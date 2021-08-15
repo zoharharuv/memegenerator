@@ -101,7 +101,7 @@ a, button {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    padding: 70px 10px;
+    padding: 30px 10px;
     background-color: #afa8a8;
 }
 
@@ -134,13 +134,8 @@ a, button {
 
 /* GALLERY */
 
-.search-bar {
-    width: 100%;
-    display: flex;
-}
-
 .gallery, .memes-container {
-    margin: 50px 0;
+    margin: 30px 0;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
     gap: 30px;
@@ -166,7 +161,7 @@ a, button {
 }
 
 .upload-img {
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -176,7 +171,7 @@ a, button {
 .upload-img h2 {
     color: #a09b6e;
     font-family: 'Trocchi', serif;
-    font-size: 45px;
+    font-size: 2.5em;
     font-weight: normal;
     line-height: 1.8em;
     margin: 0;
@@ -305,9 +300,9 @@ a, button {
     display: flex;
 }
 
-.about-me * {
-    color: black;
-    margin-bottom: 100px;
+.about-me h3 {
+    color: rgb(41, 39, 39);
+    margin-bottom: 20px;
 }
 
 .about-links {
@@ -320,7 +315,7 @@ a, button {
 }
 
 .about a img {
-    width: 50%;
+    max-width: 50%;
 }
 
 /* MY-MEMES */
@@ -333,12 +328,21 @@ a, button {
     align-items: center;
 }
 
-.meme-title {
+.meme-title h1{
     color: #7c795d;
     font-family: 'Trocchi', serif;
-    font-size: 45px;
+    font-size: 2.5em;
     font-weight: normal;
-    line-height: 48px;
+    line-height: 1.8em;
+    margin: 0;
+}
+
+.meme-title h2{
+    color: #8b8763;
+    font-family: 'Trocchi', serif;
+    font-size: 1.8em;
+    font-weight: bold;
+    line-height: 1.8em;
     margin: 0;
 }
 
@@ -476,12 +480,15 @@ a, button {
 
 @media screen and (max-width: 760px) {
     /* CONTENT */
+    /* body{
+        width: fit-content;
+    } */
     .main-layout {
-        max-width: 560px;
+        max-width: 95%;
     }
     /* GALLERY */
     .gallery, .memes-container {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     }
     .gallery-item {
         object-fit: contain;
