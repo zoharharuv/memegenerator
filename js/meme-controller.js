@@ -136,7 +136,7 @@ function onDeleteLine() {
 function onSwitchLines() {
     if (!currMeme.lines.length) return;
     currIdx = switchLines();
-    if (!currIdx) return;
+    if (currIdx < 0) return;
     focusInput();
     renderMeme();
 }
