@@ -166,9 +166,10 @@ function onSetColor(option, color) {
 }
 
 // MODAL FUNCS
-function onSaveMeme() {
+function onSaveMeme(el) {
+    console.log(el);
     saveMeme();
-    closeModal();
+    el.innerText = 'Saved!';
 }
 
 function onDownload(el) {
