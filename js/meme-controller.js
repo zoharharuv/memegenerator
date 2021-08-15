@@ -180,6 +180,7 @@ function onDownload(el) {
 function onSelectMyMeme(memeIdx) {
     hideEls();
     removeActives();
+    gImg = null;
     currMeme = getMyMeme(memeIdx);
     currImgId = currMeme.selectedImgId;
     resetInput();
@@ -210,9 +211,10 @@ function onSearchWord(word, el = null) {
 }
 
 // HANDLE IMG UPLOAD
-function onImgInput(ev) {
+function onImgInput(ev, el) {
     gIsUpload = true;
     loadImageFromInput(ev, renderImg)
+    el.value = null;
 }
 
 function loadImageFromInput(ev, onImageReady) {
@@ -227,6 +229,10 @@ function loadImageFromInput(ev, onImageReady) {
 
 function renderImg(img) {
     gImg = img;
+    currImgId = 101;
+    currMeme = resetMeme();
     hideEls();
+    removeActives();
+    resetInput();
     renderMeme();
 }

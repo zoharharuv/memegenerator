@@ -31,31 +31,38 @@
         <section id="content" class="content main-layout">
 
             <section class="search flex hidden">
-                <input type="search" id="search-bar" placeholder="Filter by word" oninput="onSearchWord(this.value)">
+                <div class="search-bar flex">
 
-                <ul class="words-list clean-list flex">
-                    <li class="search-word funny" onclick="onSearchWord('funny', this)">funny</li>
-                    <li class="search-word happy" onclick="onSearchWord('happy', this)">happy</li>
-                    <li class="search-word love" onclick="onSearchWord('love', this)">love</li>
-                    <li class="search-word nice" onclick="onSearchWord('nice', this)">nice</li>
-                </ul>
+                    <input type="search" id="search-bar" placeholder="Filter by word"
+                        oninput="onSearchWord(this.value)">
 
-                <div class="all-words-box hidden">
-                    <ul class="words-list clean-list flex ">
-                        <li class="search-word cool" onclick="onSearchWord('cool', this)">cool</li>
-                        <li class="search-word angry" onclick="onSearchWord('angry', this)">angry</li>
-                        <li class="search-word sad" onclick="onSearchWord('sad', this)">sad</li>
-                        <li class="search-word baby" onclick="onSearchWord('baby', this)">baby</li>
-                        <li class="search-word cats" onclick="onSearchWord('cats', this)">cats</li>
-                        <li class="search-word dogs" onclick="onSearchWord('dogs', this)">dogs</li>
+                    <ul class="words-list clean-list flex">
+                        <li class="search-word funny" onclick="onSearchWord('funny', this)">funny</li>
+                        <li class="search-word happy" onclick="onSearchWord('happy', this)">happy</li>
+                        <li class="search-word love" onclick="onSearchWord('love', this)">love</li>
+                        <li class="search-word nice" onclick="onSearchWord('nice', this)">nice</li>
                     </ul>
+
+                    <div class="all-words-box hidden">
+                        <ul class="words-list clean-list flex ">
+                            <li class="search-word cool" onclick="onSearchWord('cool', this)">cool</li>
+                            <li class="search-word angry" onclick="onSearchWord('angry', this)">angry</li>
+                            <li class="search-word sad" onclick="onSearchWord('sad', this)">sad</li>
+                            <li class="search-word baby" onclick="onSearchWord('baby', this)">baby</li>
+                            <li class="search-word cats" onclick="onSearchWord('cats', this)">cats</li>
+                            <li class="search-word dogs" onclick="onSearchWord('dogs', this)">dogs</li>
+                        </ul>
+                    </div>
+
+                    <span class="all-words-btn" onclick="onShowAllWords(this)">All..</span>
                 </div>
 
-                <span class="all-words-btn" onclick="onShowAllWords(this)">All..</span>
-
                 <div class="upload-img">
-                    <h2>Upload a photo</h2>
-                    <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
+                    <label for="user-img">
+                        <h2>Use custom photo</h2>
+                    </label>
+                    <input type="file" class="file-input btn hidden" name="image" id="user-img"
+                        onchange="onImgInput(event, this)" />
                 </div>
             </section>
 
@@ -153,8 +160,8 @@
     <script src="js/services/storage-service.js"></script>
     <script src="js/services/meme-service.js"></script>
     <script src="js/services/upload-service.js"></script>
-    <script src="js/controller.js"></script>
-    <script src="js/misc.js"></script>
+    <script src="js/meme-controller.js"></script>
+    <script src="js/app-controller.js"></script>
 </body>
 
 
