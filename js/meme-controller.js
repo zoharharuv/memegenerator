@@ -182,6 +182,7 @@ function onSelectMyMeme(memeIdx) {
     hideEls();
     removeActives();
     gImg = null;
+    gIsUpload = false;
     currMeme = getMyMeme(memeIdx);
     currImgId = currMeme.selectedImgId;
     resetInput();
