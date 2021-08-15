@@ -1,6 +1,5 @@
 'use strict'
 var gCurrSize = window.innerWidth
-var gCurrEl;
 var gMaxFontSize;
 var gCanvas;
 
@@ -23,30 +22,22 @@ window.addEventListener('resize', () => {
 function toggleMenu() {
     if (gCurrSize <= 760) document.body.classList.toggle('menu-open');
 }
-
-function showGallery(btn) {
-    gCurrEl = 'gallery';
+function showContent(currEl, btn) {
     onClickNavBtn(btn)
     hideEls();
-    renderGallery();
+    switch (currEl) {
+        case 'gallery':
+            renderGallery();
+            break;
+        case 'about':
+            elAbout.classList.remove('hidden');
+            break;
+        case 'memes':
+            elMemes.classList.remove('hidden');
+            renderMyMemes();
+            break;
+    }
     toggleMenu();
-}
-
-function showAbout(btn) {
-    gCurrEl = 'about';
-    onClickNavBtn(btn);
-    hideEls();
-    elAbout.classList.remove('hidden');
-    toggleMenu();
-}
-
-function showMemes(btn) {
-    gCurrEl = 'memes';
-    onClickNavBtn(btn);
-    hideEls();
-    elMemes.classList.remove('hidden');
-    toggleMenu();
-    renderMyMemes();
 }
 
 function onClickNavBtn(el) {

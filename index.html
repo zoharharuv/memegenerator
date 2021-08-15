@@ -7,20 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MemeGen</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="icon" type="image/png" href="design/ICONS/m-favicon.png" />
+    <link rel="icon" type="image/png" href="design/icons/m-favicon.png" />
 </head>
 
 <body onload="init()">
 
     <header class="nav-bar-bc">
         <nav class="nav-bar main-layout flex">
-            <img id="logo" class="logo" src="design/LOGO/LOGO.png" />
+            <img id="logo" class="logo" src="design/logo.png" />
             <ul class="main-nav flex clean-list">
-                <li class="nav-btn" onclick="showGallery(this)"><a href="#">Gallery</a></li>
+                <li class="nav-btn" onclick="showContent('gallery',this)"><a href="#">Gallery</a></li>
                 <li class="vertical-line"></li>
-                <li class="nav-btn" onclick="showMemes(this)"><a href="#">Memes</a></li>
+                <li class="nav-btn" onclick="showContent('memes',this)"><a href="#">Memes</a></li>
                 <li class="vertical-line"></li>
-                <li class="nav-btn" onclick="showAbout(this)"><a href="#">About</a></li>
+                <li class="nav-btn" onclick="showContent('about',this)"><a href="#">About</a></li>
             </ul>
             <button class="btn-menu-toggle" onclick="toggleMenu()">☰</button>
         </nav>
@@ -31,8 +31,7 @@
         <section id="content" class="content main-layout">
 
             <section class="search flex hidden">
-                <input type="search" id="search-bar" placeholder="Filter by word"
-                    oninput="onSearchWord(this.value)">
+                <input type="search" id="search-bar" placeholder="Filter by word" oninput="onSearchWord(this.value)">
 
                 <ul class="words-list clean-list flex">
                     <li class="search-word funny" onclick="onSearchWord('funny', this)">funny</li>
@@ -54,15 +53,15 @@
 
                 <span class="all-words-btn" onclick="onShowAllWords(this)">All..</span>
 
+                <div class="upload-img">
+                    <h2>Upload a photo</h2>
+                    <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
+                </div>
             </section>
 
 
             <section class="gallery"></section>
             <section class="meme-gen">
-                <div class="upload-img">
-                    <h2>Upload a photo</h2>
-                    <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
-                </div>
                 <section class="generator">
                     <div class="canvas-container">
                         <canvas id="canvas" height="550" width="550"></canvas>
@@ -76,20 +75,20 @@
                             <!-- LINE 2 -->
                             <button class="tool-btn line-up" onclick="onMoveLine(-10)">👆</button>
                             <button class="tool-btn line-down" onclick="onMoveLine(10)">👇</button>
-                            <img src="design/ICONS/switch-lines.png" class="tool-btn switch-lines"
+                            <img src="design/icons/switch-lines.png" class="tool-btn switch-lines"
                                 onclick="onSwitchLines()" />
-                            <img src="design/ICONS/add.png" class="tool-btn add-line" onclick="onAddLine()" />
-                            <img src="design/ICONS/delete.png" class="tool-btn delete-line" onclick="onDeleteLine()" />
+                            <img src="design/icons/add.png" class="tool-btn add-line" onclick="onAddLine()" />
+                            <img src="design/icons/delete.png" class="tool-btn delete-line" onclick="onDeleteLine()" />
                             <!-- LINE 3 -->
-                            <img src="design/ICONS/font-plus.png" class="tool-btn add-size"
+                            <img src="design/icons/font-plus.png" class="tool-btn add-size"
                                 onclick="onSetFontsize(5)" />
-                            <img src="design/ICONS/decrease-font.png" class="tool-btn decrease-size"
+                            <img src="design/icons/decrease-font.png" class="tool-btn decrease-size"
                                 onclick="onSetFontsize(-5)" />
-                            <img src="design/ICONS/align-left.png" class="tool-btn align-right"
+                            <img src="design/icons/align-left.png" class="tool-btn align-right"
                                 onclick="onSetAlign('right')" />
-                            <img src="design/ICONS/align-center.png" class="tool-btn align-center"
+                            <img src="design/icons/align-center.png" class="tool-btn align-center"
                                 onclick="onSetAlign('center')" />
-                            <img src="design/ICONS/align-right.png" class="tool-btn align-left"
+                            <img src="design/icons/align-right.png" class="tool-btn align-left"
                                 onclick="onSetAlign('left')" />
                             <!-- LINE 4 -->
                             <select name="fonts" class="fonts-input" onchange="onSetFont(this.value)">
@@ -102,10 +101,10 @@
                                 <option value="Cursive">Cursive</option>
                             </select>
                             <label for="font-stroke" class="custom-stroke-txt">
-                                <img src="design/ICONS/text-stroke.png" class="tool-btn text-stroke">
+                                <img src="design/icons/text-stroke.png" class="tool-btn text-stroke">
                             </label>
                             <label for="font-fill" class="custom-txt-color">
-                                <img src="design/ICONS/text-fill.png" class="tool-btn text-fill">
+                                <img src="design/icons/text-fill.png" class="tool-btn text-fill">
                             </label>
                             <!-- LINE 5 -->
                             <button class="tool-btn publish-btn" onclick="openModal()">Publish</button>
@@ -125,10 +124,10 @@
                     <h3>This was created by Zohar Haruv as the second project in Coding Academy Fullstack course!</h3>
                 </div>
                 <div class="about-links">
-                    <a href="https://github.com/zoharharuv/"><img src="design/ICONS/github-logo.png" alt="github" /></a>
+                    <a href="https://github.com/zoharharuv/"><img src="design/icons/github-logo.png" alt="github" /></a>
                     <a href="https://www.linkedin.com/in/zohar-haruv-a6690b210/"> <img
-                            src="design/ICONS/linkedin-logo.png" alt="linkedin" /></a>
-                    <a href="https://www.facebook.com/MisterBlat/"> <img src="design/ICONS/facebook-logo.png"
+                            src="design/icons/linkedin-logo.png" alt="linkedin" /></a>
+                    <a href="https://www.facebook.com/MisterBlat/"> <img src="design/icons/facebook-logo.png"
                             alt="facebook" /></a>
                 </div>
             </section>
@@ -150,7 +149,7 @@
             all rights reserved 2021 zohar h
         </section>
     </section>
-    
+
     <script src="js/services/storage-service.js"></script>
     <script src="js/services/meme-service.js"></script>
     <script src="js/services/upload-service.js"></script>

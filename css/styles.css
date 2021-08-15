@@ -137,7 +137,7 @@ a, button {
 .gallery, .memes-container {
     margin: 30px 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 30px;
 }
 
@@ -355,13 +355,13 @@ a, button {
     top: 50%;
     left: 50%;
     z-index: 30;
-    background-color: #d6d4cc;
+    background-color: #413f3aed;
     padding: 50px;
     transform: translate(-50%, -50%);
     gap: 25px;
 }
 
-.modal a {
+.modal a{
     color: #fff;
 }
 
@@ -386,7 +386,7 @@ a, button {
 }
 
 .download-modal {
-    background-color: rgb(177, 65, 45);
+    background-color: rgb(231, 210, 25);
 }
 
 .save-modal {
@@ -395,7 +395,7 @@ a, button {
 
 .close-modal {
     position: absolute;
-    background-color: rgb(56, 54, 54);
+    background-color: rgb(223, 27, 27);
     color: #fff;
     top: 3px;
     right: 3px;
@@ -404,7 +404,7 @@ a, button {
 }
 
 .close-modal:hover {
-    background-color: rgb(206, 150, 30);
+    background-color: rgb(158, 44, 44);
 }
 
 /* SMALL PC */
@@ -414,7 +414,7 @@ a, button {
         width: 1040px;
     }
     .gallery, .memes-container {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
         gap: 25px;
     }
     .gallery-item {
@@ -488,7 +488,7 @@ a, button {
     }
     /* GALLERY */
     .gallery, .memes-container {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
     }
     .gallery-item {
         object-fit: contain;

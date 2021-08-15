@@ -60,7 +60,7 @@ function renderMeme() {
     // RENDER IMG+MEME LINES
     currMeme = getMeme();
     currMeme.selectedImgId = currImgId;
-    drawImg(currImgId);
+    drawImg();
 }
 
 function drawImg() {
@@ -98,6 +98,7 @@ function drawMemeLines() {
 function onSelectMeme(imgId) {
     hideEls();
     removeActives();
+    gImg = null;
     currImgId = imgId;
     currMeme = resetMeme();
     resetInput();
@@ -226,5 +227,6 @@ function loadImageFromInput(ev, onImageReady) {
 
 function renderImg(img) {
     gImg = img;
-    drawImg(gImg);
+    hideEls();
+    renderMeme();
 }
